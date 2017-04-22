@@ -1,0 +1,46 @@
+/*color candidates:
+#FFFAF0 - Floral White
+#FFF0F5 - Lavender Blush
+#F0FFF0 - Honeydew
+#F0FFFF - Azure*/
+html {
+  background-color: Azure;
+}
+
+.thankyou-box {
+  background-color: FloralWhite;
+  border: 2px;
+}
+
+
+.thankyou {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 24px;
+  font-style: normal;
+  line-height: 26px;
+  color: #343434;
+}
+
+.thanks_message {
+  font-family: sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  line-height: 17px;
+  color: #343434;
+
+}
+
+.heading {
+  text-align: left;
+  font-family: sans-serif;
+  color: #343434;
+}
+
+.welcome {
+
+}
+
+.email-box {
+  background-color: FloralWhite;
+  border: 2px;
+}
