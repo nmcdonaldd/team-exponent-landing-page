@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ title }} | My Chat App</title>
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <title>{{ title }} | Landing Page</title>
+    <link href="{{ url_for('static', filename='css/landing.css') }}" rel="stylesheet">
 </head>
 <body>
-  <div class="Heading">
-    <a href="{{ url_for('chat_view')}}"><h1>Hummingbird</h1></a>
+  <div class="heading">
+    <p class="welcome">Welcome to the Team Exponent Landing Page!</p>
   </div>
  {% block body %}
  {% endblock %}
