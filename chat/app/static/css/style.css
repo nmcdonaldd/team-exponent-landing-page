@@ -1,0 +1,33 @@
+/*ADD YOUR STYLES HERE*/
+* {
+  font-family: sans-serif;
+  background-color: #181c24;
+}
+
+h3 {
+  color: #cc8f58;
+}
+
+table tr td {
+  color: #cc8f58;
+}
+
+h2 {
+  color: #ff616b;
+}
+
+h1 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ff616b;
+}
+
+a {
+  text-decoration: none;
+  color:#47aebb;
+}
+
+tr {
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+/*tr:nth-child(even) {background-color: #e3e3e3}*/

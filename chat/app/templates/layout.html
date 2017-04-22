@@ -1,0 +1,16 @@
+<!-- app/templates/layout.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ title }} | My Chat App</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+  <div class="Heading">
+    <a href="{{ url_for('chat_view')}}"><h1>Hummingbird</h1></a>
+  </div>
+ {% block body %}
+ {% endblock %}
+</body>
+</html>

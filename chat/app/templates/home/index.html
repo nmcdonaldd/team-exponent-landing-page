@@ -1,0 +1,33 @@
+<!-- app/templates/home/index.html -->
+{% extends "layout.html" %}
+{% block body %}
+  <h3 align="center">Flutters</h3>
+  <table align="center">
+    {% for flutter in flutters %}
+      <tr>
+        <div>
+          <td>
+            <a href="/user/{{ associated_users[loop.index0].id }}"> {{ associated_users[loop.index0].username }}</a>:
+          </td>
+        </div>
+        <div class="fluttermessage">
+          <td>
+            {{ flutter.message }}
+          </td>
+        </div>
+      </tr>
+    {% else %}
+    <h3>No Flutters here.</h3>
+    {% endfor %}
+  </table>
+  <h3>Users</h3>
+  <table>
+    {% for user in users %}
+    <tr>
+      <td>
+        <a href="/user/{{ user.id }}"> {{ user.username }} </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!-- app/templates/home/userprofile.html -->
+
+{% extends "layout.html" %}
+{% block body %}
+  <h2>{{user.first_name}} {{user.last_name}}</h2><h3>@{{user.username}}</h3>
+  <h2 align="center">{{user.username}}'s Flutters:</h2>
+  <table align="center">
+    {% for flutter in flutters %}
+      <tr>
+        <div class="fluttermessage">
+          <td>
+            {{ flutter.message }}
+          </td>
+        </div>
+      </tr>
+    {% else %}
+    <h3 align="center">No Flutters here.</h3>
+    {% endfor %}
+  </table>
+{% endblock %}
+
+<!-- EXTEND layout.html and create the user profile page -->
