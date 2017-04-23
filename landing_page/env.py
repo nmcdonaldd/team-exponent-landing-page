@@ -1,5 +1,5 @@
 FLASK_CONFIG = 'development'
 THE_SECRET_KEY = 'd0fbb48c2b61cace96be32a87feea242'
-DB_USER = 'chat_admin'
+DB_USER = 'baby_admin'
 DB_PASS = 'password'
-DB_NAME = 'landing-page'
+DB_NAME = 'baby'
