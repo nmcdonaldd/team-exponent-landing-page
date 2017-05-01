@@ -37,7 +37,7 @@ def chat_view():
 	new_visitor = models.Visitor()
 	db.session.add(new_visitor)
 	db.session.commit()
-    return render_template('home/index.html')
+	return render_template('home/index.html')
 
 @app.route('/submit', methods=['POST'])
 def subscribing():
