@@ -1,2 +1,2 @@
 heroku ps:scale web=1
-web: python landing_page/landing_page
+web: gunicorn landing_page/landing_page:app
