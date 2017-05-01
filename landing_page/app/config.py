@@ -1,3 +1,4 @@
+from landing_page import env
 from env import *
 
 # Common configuration
