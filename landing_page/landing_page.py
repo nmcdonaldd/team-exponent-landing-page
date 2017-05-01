@@ -57,7 +57,7 @@ def subscribing():
 @app.route('/stats')
 def statistics():
 	#Gotta figure out how to get the last visitor to visit landing page
-	#recent_visitor = session.query(models.Visitor).order_by(models.Visitor.id.desc()).first()
+	
 	recent_visitor = models.Visitor.query.order_by(models.Visitor.id.desc()).first()
 	recent_visit_time = recent_visitor.time
 	all_visits = recent_visitor.id
