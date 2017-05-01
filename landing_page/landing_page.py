@@ -56,7 +56,9 @@ def subscribing():
     return render_template('home/thankyou.html', first_name=the_subscriber_fname)
 @app.route('/stats')
 def statistics():
-	
+	#Gotta figure out how to get the last visitor to visit landing page 
+	recent_visitor = models.Visitor.query.all()
+	return render_Template('home/stats.html', last_visit =  , last_signup =, total_visits = , total_signups =)
 ''' =========================================================================================== '''
 # run the app
 if __name__ == '__main__':
