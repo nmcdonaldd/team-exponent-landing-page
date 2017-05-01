@@ -1,5 +1,5 @@
 #from landing_page import env
-from env import *
+from . import *
 
 # Common configuration
 class Config(object):
