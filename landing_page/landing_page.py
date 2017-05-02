@@ -57,15 +57,15 @@ def subscribing():
 @app.route('/stats')
 def statistics():
 	#Gotta figure out how to get the last visitor to visit landing page
-	
+
 	recent_visitor = models.Visitor.query.order_by(models.Visitor.id.desc()).first()
 	recent_visit_time = recent_visitor.time
 	all_visits = recent_visitor.id
 
 	recent_subscriber = models.Subscriber.query.order_by(models.Subscriber.id.desc()).first()
-	recent_subscribe_time = recent_subscriber.time
+	recent_subscribe_name = recent_subscriber.first_name
 	all_signups = recent_subscriber.id
-	return render_template('home/stats.html', last_visit = recent_visit_time  , last_signup = recent_subscribe_time, total_visits = all_visits , total_signups = all_signups)
+	return render_template('home/stats.html', last_visit = recent_visit_time  , last_signup = recent_subscribe_name, total_visits = all_visits , total_signups = all_signups)
 ''' =========================================================================================== '''
 # run the app
 if __name__ == '__main__':
