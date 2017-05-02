@@ -19,7 +19,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_ECHO = True
     SECRET_KEY = THE_SECRET_KEY
-    SQLALCHEMY_DATABASE_URI = "mysql://b645e0a2b53a96:70e0b973@us-cdbr-iron-east-03.cleardb.net/heroku_6fda0eae223da40?reconnect=true"
+    SQLALCHEMY_DATABASE_URI = "mysql://b645e0a2b53a96:70e0b973@us-cdbr-iron-east-03.cleardb.net/heroku_6fda0eae223da40"
 
     """
     Added the following to suppress warnings in the terminal.
