@@ -60,11 +60,11 @@ def statistics():
 
 	recent_visitor = models.Visitor.query.order_by(models.Visitor.id.desc()).first()
 	recent_visit_time = recent_visitor.time
-	all_visits = recent_visitor.id
+	all_visits = models.Visitor.query.count()
 
 	recent_subscriber = models.Subscriber.query.order_by(models.Subscriber.id.desc()).first()
 	recent_subscribe_name = recent_subscriber.first_name
-	all_signups = recent_subscriber.id
+	all_signups = models.Subscriber.query.count()
 	return render_template('home/stats.html', last_visit = recent_visit_time  , last_signup = recent_subscribe_name, total_visits = all_visits , total_signups = all_signups)
 ''' =========================================================================================== '''
 # run the app
