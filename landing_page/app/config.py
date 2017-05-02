@@ -1,5 +1,12 @@
 #from landing_page import env
-from env import *
+# from env import *
+
+FLASK_CONFIG = 'development'
+THE_SECRET_KEY = 'd0fbb48c2b61cace96be32a87feea242'
+DB_USER = 'b645e0a2b53a96'
+DB_PASS = '70e0b973'
+DB_NAME = 'heroku_6fda0eae223da40'
+
 
 # Common configuration
 class Config(object):
