@@ -66,6 +66,15 @@ def statistics():
 	recent_subscribe_name = recent_subscriber.first_name
 	all_signups = models.Subscriber.query.count()
 	return render_template('home/stats.html', last_visit = recent_visit_time  , last_signup = recent_subscribe_name, total_visits = all_visits , total_signups = all_signups)
+
+@app.route("/api/subscribers")
+def subscribers():
+	allSubs = models.Subscriber.query.all()
+	jsonToReturn = []
+	for subscriber in allSubs:
+		jsonToReturn.append({'first_name': subscriber.first_name, 'email': subscriber.email})
+	return jsonify(jsonToReturn)
+
 ''' =========================================================================================== '''
 # run the app
 if __name__ == '__main__':
