@@ -8,6 +8,7 @@ from flask import request
 from flask import redirect
 from flask import session
 from flask import jsonify
+from flask import abort
 
 # local imports
 from app import create_app
@@ -74,6 +75,19 @@ def subscribers():
 	for subscriber in allSubs:
 		jsonToReturn.append({'id': subscriber.id, 'first_name': subscriber.first_name, 'email': subscriber.email})
 	return jsonify(jsonToReturn)
+
+@app.route("/api/temp_hum/create", methods=["POST"])
+def create_temp_hum_reading():
+	if not request.json:
+		return abort(400)
+	values = request.get_json()
+	temp = values['temp']
+	hum = values['hum']
+	new_reading = models.temp_hum(temperature=temp, humidity=hum)
+	db.session.add(new_reading)
+	db.session.commit()
+
+	return jsonify(new_reading.toDict()), 201
 
 ''' =========================================================================================== '''
 # run the app

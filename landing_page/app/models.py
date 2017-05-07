@@ -12,6 +12,7 @@ class Subscriber(db.Model):
     def __init__(self, first_name, email):
         self.first_name = first_name
         self.email = email
+
 class Visitor(db.Model):
     __tablename__ = 'visitors'
     id = db.Column(db.Integer, primary_key=True)
@@ -25,8 +26,11 @@ class temp_hum(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     temperature = db.Column(db.Integer, index=True, nullable=True)
     humidity = db.Column(db.Integer, index=True, nullable=True)
-    time = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=str(datetime.now().strftime("%m/%d/%Y %H:%M")))
+    timestamp = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=str(datetime.now().strftime("%m/%d/%Y %H:%M")))
 
-    def __init__(self, termperature, humidity):
+    def __init__(self, temperature, humidity):
         self.temperature = temperature
         self.humidity = humidity
+
+    def toDict(self):
+        return {'id': self.id, 'temperature': self.temperature, 'humidity': self.humidity, 'timestamp': self.timestamp}
