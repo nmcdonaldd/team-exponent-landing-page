@@ -19,3 +19,14 @@ class Visitor(db.Model):
 
     def __init__(self):
         pass
+
+class temp_hum(db.Model):
+    __tablename__ = 'temp_hum'
+    id = db.Column(db.Integer, primary_key=True)
+    temperature = db.Column(db.Integer, index=True, nullable=True)
+    humidity = db.Column(db.Integer, index=True, nullable=True)
+    time = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=str(datetime.now().strftime("%m/%d/%Y %H:%M")))
+
+    def __init__(self, termperature, humidity):
+        self.temperature = temperature
+        self.humidity = humidity
