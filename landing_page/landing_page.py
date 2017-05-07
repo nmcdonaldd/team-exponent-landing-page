@@ -72,7 +72,7 @@ def subscribers():
 	allSubs = models.Subscriber.query.all()
 	jsonToReturn = []
 	for subscriber in allSubs:
-		jsonToReturn.append({'first_name': subscriber.first_name, 'email': subscriber.email})
+		jsonToReturn.append({'id': subscriber.id, 'first_name': subscriber.first_name, 'email': subscriber.email})
 	return jsonify(jsonToReturn)
 
 ''' =========================================================================================== '''
