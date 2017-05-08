@@ -16,6 +16,11 @@ from app import models
 from app import db
 from env import FLASK_CONFIG
 
+# pythong libraries
+from datetime import datetime
+from sqlalchemy import Column, DateTime
+from sqlalchemy.sql import func
+
 ''' =========================================================================================== '''
 # instantiate the app
 app = create_app(FLASK_CONFIG)
@@ -76,6 +81,14 @@ def subscribers():
 		jsonToReturn.append({'id': subscriber.id, 'first_name': subscriber.first_name, 'email': subscriber.email})
 	return jsonify(jsonToReturn)
 
+@app.route("/api/temp_hum")
+def temp_hums():
+	all_temp_hum = models.temp_hum.query.all()
+	jsonToReturn = []
+	for value in all_temp_hum:
+		jsonToReturn.append(value.toDict())
+	return jsonify(jsonToReturn)
+
 @app.route("/api/temp_hum/create", methods=["POST"])
 def create_temp_hum_reading():
 	if not request.json:
@@ -88,6 +101,38 @@ def create_temp_hum_reading():
 	db.session.commit()
 
 	return jsonify(new_reading.toDict()), 201
+
+@app.route("/api/temp_hum/update/<int:entry_id>", methods=["PUT"])
+def update_temp_hum_reading(entry_id):
+	if not request.json:
+		return abort(400)
+
+	new_values = request.get_json()
+
+	updated_reading = models.temp_hum.query.get(entry_id)
+
+	if updated_reading is None:
+		return abort(400)
+
+	updated_reading.temperature = new_values['temp']
+	updated_reading.humidity = new_values['hum']
+
+	db.session.commit()
+
+	return jsonify(updated_reading.toDict()), 201
+
+
+@app.route("/api/temp_hum/delete/<int:entry_id>", methods=["DELETE"])
+def delete_temp_hum_reading(entry_id):
+	to_delete = models.temp_hum.query.get(entry_id)
+
+	if to_delete is None:
+		return abort(400)
+
+	db.session.delete(to_delete)
+	db.session.commit()
+
+	return jsonify(to_delete.toDict()), 201
 
 ''' =========================================================================================== '''
 # run the app

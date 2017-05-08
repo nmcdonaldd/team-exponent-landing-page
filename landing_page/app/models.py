@@ -26,7 +26,7 @@ class temp_hum(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     temperature = db.Column(db.Integer, index=True, nullable=True)
     humidity = db.Column(db.Integer, index=True, nullable=True)
-    timestamp = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=str(datetime.now().strftime("%m/%d/%Y %H:%M")))
+    timestamp = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=func.current_timestamp())
 
     def __init__(self, temperature, humidity):
         self.temperature = temperature
