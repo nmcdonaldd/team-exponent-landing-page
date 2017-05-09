@@ -60,3 +60,97 @@ Returns a collection of users in JSON format that have subscribed to our website
   }
 ]
 ```
+
+### /api/temp_hum
+Returns a collection of temperature and humidity readings taken from our prototype FeatherPad unit in JSON format. Temperature is given in degrees Celsius and humidity is given as a percentage.
+
+### Example Request
+*GET https://featherpad.herokuapp.com/api/temp_hum*
+
+### Example Response
+```json
+[
+  {
+    "humidity": 49,
+    "id": 122,
+    "temperature": 21,
+    "timestamp": "Sun, 07 May 2017 23:13:49 GMT"
+  },
+  {
+    "humidity": 49,
+    "id": 132,
+    "temperature": 21,
+    "timestamp": "Sun, 07 May 2017 23:14:50 GMT"
+  },
+  {
+    "humidity": 49,
+    "id": 142,
+    "temperature": 21,
+    "timestamp": "Sun, 07 May 2017 23:15:52 GMT"
+  },
+  {
+    "humidity": 48,
+    "id": 152,
+    "temperature": 21,
+    "timestamp": "Sun, 07 May 2017 23:24:10 GMT"
+  },
+  {
+    "humidity": 47,
+    "id": 162,
+    "temperature": 21,
+    "timestamp": "Sun, 07 May 2017 23:25:12 GMT"
+  },
+  {
+    "humidity": 48,
+    "id": 172,
+    "temperature": 21,
+    "timestamp": "Sun, 07 May 2017 23:26:21 GMT"
+  },
+  {
+    "humidity": 48,
+    "id": 182,
+    "temperature": 21,
+    "timestamp": "Sun, 07 May 2017 23:27:25 GMT"
+  },
+  {
+    "humidity": 48,
+    "id": 192,
+    "temperature": 21,
+    "timestamp": "Sun, 07 May 2017 23:28:29 GMT"
+  },
+  {
+    "humidity": 48,
+    "id": 202,
+    "temperature": 21,
+    "timestamp": "Sun, 07 May 2017 23:29:33 GMT"
+  },
+  {
+    "humidity": 48,
+    "id": 212,
+    "temperature": 20,
+    "timestamp": "Sun, 07 May 2017 23:30:35 GMT"
+  }
+]
+```
+
+### /api/temp_hum/update/<_id_>
+Updates the *temp_hum reading* data set with identifier _id_. Note, a set of temperature and humidity data must be passed with the request. Upon success, the request will return a _temp_hum_ reading with updated values.
+
+### Example Request
+*PUT https://featherpad.herokuapp.com/api/temp_hum/update/122*
+```json
+{
+  "temp": 32,
+  "hum": 51
+}
+```
+
+### Example Response
+```json
+{
+    "humidity": 51,
+    "id": 122,
+    "temperature": 32,
+    "timestamp": "Sun, 07 May 2017 23:13:49 GMT"
+}
+```
