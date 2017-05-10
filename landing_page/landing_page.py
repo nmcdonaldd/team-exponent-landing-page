@@ -50,19 +50,24 @@ def chat_view():
 
 @app.route('/submit', methods=['POST'])
 def subscribing():
-    the_subscriber_fname = request.form['name']
-    the_subscriber_email = request.form['email_address']
+	the_subscriber_fname = request.form['name']
+	the_subscriber_email = request.form['email_address']
 
-    # Making it so that the name appears with a capital first letter
-    the_subscriber_fname = ' '.join(word[0].upper() + word[1:] for word in the_subscriber_fname.lower().split())
+	# If pressing enter with no credentials
+	if request.form['name'] or request.form['email_address'] is None:
+		return render_template('home/index.html')
 
-    new_db_subscriber = models.Subscriber(first_name=the_subscriber_fname, email=the_subscriber_email)
-    print("new subscriber: ", new_db_subscriber.first_name, new_db_subscriber.email)
+	# Making it so that the name appears with a capital first letter
+	the_subscriber_fname = ' '.join(word[0].upper() + word[1:] for word in the_subscriber_fname.lower().split())
 
-    db.session.add(new_db_subscriber)
-    db.session.commit()
+	new_db_subscriber = models.Subscriber(first_name=the_subscriber_fname, email=the_subscriber_email)
+	print("new subscriber: ", new_db_subscriber.first_name, new_db_subscriber.email)
 
-    return render_template('home/thankyou.html', first_name=the_subscriber_fname)
+	db.session.add(new_db_subscriber)
+	db.session.commit()
+
+	return render_template('home/thankyou.html', first_name=the_subscriber_fname)
+
 @app.route('/stats')
 def statistics():
 	#Gotta figure out how to get the last visitor to visit landing page
