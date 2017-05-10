@@ -46,7 +46,7 @@ def chat_view():
 	new_visitor = models.Visitor()
 	db.session.add(new_visitor)
 	db.session.commit()
-	return render_template('home/index.html')
+	return render_template('home/index.html', title='Home')
 
 @app.route('/submit', methods=['POST'])
 def subscribing():
@@ -62,7 +62,7 @@ def subscribing():
 	db.session.add(new_db_subscriber)
 	db.session.commit()
 
-	return render_template('home/thankyou.html', first_name=the_subscriber_fname)
+	return render_template('home/thankyou.html', title='Thank You!', first_name=the_subscriber_fname)
 
 @app.route('/stats')
 def statistics():
@@ -75,7 +75,7 @@ def statistics():
 	recent_subscriber = models.Subscriber.query.order_by(models.Subscriber.id.desc()).first()
 	recent_subscribe_name = recent_subscriber.first_name
 	all_signups = models.Subscriber.query.count()
-	return render_template('home/stats.html', last_visit = recent_visit_time  , last_signup = recent_subscribe_name, total_visits = all_visits , total_signups = all_signups)
+	return render_template('home/stats.html', title='Stats', last_visit = recent_visit_time  , last_signup = recent_subscribe_name, total_visits = all_visits , total_signups = all_signups)
 
 @app.route("/api/subscribers")
 def subscribers():
