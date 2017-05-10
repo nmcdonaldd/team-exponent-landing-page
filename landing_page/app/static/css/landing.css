@@ -1,11 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);
+
 /*color candidates:
 #FFFAF0 - Floral White
 #FFF0F5 - Lavender Blush
 #F0FFF0 - Honeydew
 #F0FFFF - Azure*/
 
-body {
+/*body {
   background: -webkit-linear-gradient(left, rgba(245, 94, 97, 0), rgba(245, 94, 97, 1));
+} */
+body {
+  background: url('../images/clouds2.jpg'); !important;
+  width: auto;
+  height: auto;
 }
 
 .thankyou-box {
@@ -28,9 +35,19 @@ body {
 }
 
 .message {
-  font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+  /*font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;*/
+  font-family: "Roboto";
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 17px;
+  color: #343434;
+}
+
+.message_content {
+  font-family: "Roboto";
+  font-size: 15px;
+  font-weight: 300;
   font-style: normal;
   line-height: 17px;
   color: #343434;
@@ -70,30 +87,30 @@ body {
 .heading {
 }
 
-.welcome {
+#welcome {
   text-align: center;
-  /*font: 200px Helvetica, Sans-Serif;*/
-  font-family: 'Lato', sans-serif;
+  /*font-family: 'Lato', sans-serif;*/
+  font-family: 'HelveticaNeue-Thin';
   color: #343434;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 80px;
-
+  padding-top: 30px;
+  font-size: 90px;
+  /*background-color: green;*/
 }
 
 .slogan {
   text-align: center;
-  font-size: 76px;
-  text-shadow: 2px 2px 2px #000;
-  font-family: 'Brush Script MT', cursive;
-  font-weight: bold;
-  color: Floralwhite;
-  margin: 5% 20% 5% 20%;
+  font-size: 35px;
+  font-family: 'Roboto';
+  font-weight: 200;
+  font-style: italic;
+  color: #565555;
+  /*margin: 5% 20% 5% 20%;*/
   padding-right: 10px;
   padding-left: 10px;
-  padding-top: 10px;
+  padding-top: 3px;
   padding-bottom: 10px;
   border-radius: 10px;
+  /*background-color: yellow;*/
 }
 
 .email-box {
@@ -114,4 +131,19 @@ body {
 
 .img {
   width: 100%;
+}
+
+
+.cover_message {
+  font-family: 'HelveticaNeue-Thin';
+  color: #343434;
+  font-size: 35px;
+  float: left;
+  text-align: center;
+  background-color: Honeydew;
+  margin-left: 5%;
+  margin-right: 70%;
+  box-shadow: 2px 2px 2px #000;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
 }
