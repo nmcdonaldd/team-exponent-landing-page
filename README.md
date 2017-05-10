@@ -133,6 +133,28 @@ Returns a collection of temperature and humidity readings taken from our prototy
 ]
 ```
 
+### /api/temp_hum/create
+Adds a new *temp_hum reading* data set with the provided temperature and humidity. Note, a set of temperature and humidity data must be passed with the request. Upon success, the request will return a _temp_hum_ reading with new values.
+
+### Example Request
+*POST https://featherpad.herokuapp.com/api/temp_hum/create*
+```json
+{
+  "temperature": 32,
+  "humidity": 51
+}
+```
+
+### Example Response
+```json
+{
+  "humidity": 51,
+  "id": 122,
+  "temperature": 32,
+  "timestamp": "Sun, 07 May 2017 23:13:49 GMT"
+}
+```
+
 ### /api/temp_hum/update/<_id_>
 Updates the *temp_hum reading* data set with identifier _id_. Note, a set of temperature and humidity data must be passed with the request. Upon success, the request will return a _temp_hum_ reading with updated values.
 
@@ -140,17 +162,33 @@ Updates the *temp_hum reading* data set with identifier _id_. Note, a set of tem
 *PUT https://featherpad.herokuapp.com/api/temp_hum/update/122*
 ```json
 {
-  "temp": 32,
-  "hum": 51
+  "temperature": 43,
+  "humidity": 62
 }
 ```
 
 ### Example Response
 ```json
 {
-    "humidity": 51,
-    "id": 122,
-    "temperature": 32,
-    "timestamp": "Sun, 07 May 2017 23:13:49 GMT"
+  "humidity": 62,
+  "id": 122,
+  "temperature": 43,
+  "timestamp": "Sun, 07 May 2017 23:13:49 GMT"
+}
+```
+
+### /api/temp_hum/delete/<_id_>
+Deletes the *temp_hum reading* data set with identifier _id_. Upon success, the request will return a _temp_hum_ reading with deleted values
+
+### Example Request
+*DELETE https://featherpad.herokuapp.com/api/temp_hum/update/122*
+
+### Example Response
+```json
+{
+  "humidity": 62,
+  "id": 122,
+  "temperature": 43,
+  "timestamp": "Sun, 07 May 2017 23:13:49 GMT"
 }
 ```

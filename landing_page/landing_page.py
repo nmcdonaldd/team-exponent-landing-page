@@ -94,8 +94,8 @@ def create_temp_hum_reading():
 	if not request.json:
 		return abort(400)
 	values = request.get_json()
-	temp = values['temp']
-	hum = values['hum']
+	temp = values['temperature']
+	hum = values['humidity']
 	new_reading = models.temp_hum(temperature=temp, humidity=hum)
 	db.session.add(new_reading)
 	db.session.commit()
@@ -114,8 +114,8 @@ def update_temp_hum_reading(entry_id):
 	if updated_reading is None:
 		return abort(400)
 
-	updated_reading.temperature = new_values['temp']
-	updated_reading.humidity = new_values['hum']
+	updated_reading.temperature = new_values['temperature']
+	updated_reading.humidity = new_values['humidity']
 
 	db.session.commit()
 
