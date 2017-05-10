@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
     console.log("pls");
     $("#welcome").hide().fadeIn(2000);
@@ -21,25 +19,3 @@ $(document).ready(function(){
 
     start();
 });
-
-// $(document).ready(function() {
-//     function ani() {
-//         $('#divers').animate({
-//                'margin-top':'90px'
-//             },6000).animate({
-//                'margin-top':'40px'
-//            },6000, ani); //call the function again in the callback
-//         });
-//     });
-//     ani();
-// });
-
-/*window.onload = function() {
-  if (window.jQuery) {
-      $("*").fadeIn(2000);
-      alert("Yeah!");
-  } else {
-      // jQuery is not loaded
-      alert("Doesn't Work");
-  }
-}*/

@@ -53,10 +53,6 @@ def subscribing():
 	the_subscriber_fname = request.form['name']
 	the_subscriber_email = request.form['email_address']
 
-	# If pressing enter with no credentials
-	if request.form['name'] or request.form['email_address'] is None:
-		return render_template('home/index.html')
-
 	# Making it so that the name appears with a capital first letter
 	the_subscriber_fname = ' '.join(word[0].upper() + word[1:] for word in the_subscriber_fname.lower().split())
 
