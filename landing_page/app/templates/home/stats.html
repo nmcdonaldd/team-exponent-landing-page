@@ -1,21 +1,30 @@
 <!-- app/templates/layout.html -->
+{% extends "layout.html" %}
+{% block body %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>{{ title }} | Landing Page</title>
-    <link href="{{ url_for('static', filename='css/stats.css') }}" rel="stylesheet">
-</head>
-<body>
-  <h1 class="title"> Here are some really neat stats about our landing page!</h1>
-  <div class="stats">
-    <ul>
-    <li>Our last visit occured at {{last_visit}}!</li>
-    <li>Our most recent signup is {{last_signup}}!</li>
-    <li>So far, we have {{total_visits}} visits! Wow, way to go team!</li>
-    <li>In total, we have {{total_signups}} signups. Cool stuff! </li>
-    </ul>
+
+
+  <div class="ui grid">
+
+    <div class="three column row">
+      <div class="column"></div>
+      <div class="column">
+        <div class="ui raised segment">
+          <div class="message_content">
+            <div class="message"><center> Here are some really neat stats about our landing page!</center></div>
+            <ul>
+            <li>Our last visit occured at {{last_visit}}!</li>
+            <li>Our most recent signup is {{last_signup}}!</li>
+            <li>So far, we have {{total_visits}} visits! Wow, way to go team!</li>
+            <li>In total, we have {{total_signups}} signups. Cool stuff! </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="column"></div>
+    </div>
   </div>
 
-</body>
-</html>
+
+
+{% endblock %}
