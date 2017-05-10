@@ -190,10 +190,10 @@ Updates the *temp_hum reading* data set with identifier _id_. Note, a set of tem
 
 #
 ### /api/temp_hum/delete/<_id_>
-Deletes the *temp_hum reading* data set with identifier _id_. Upon success, the request will return a _temp_hum_ reading with deleted values
+Deletes the *temp_hum reading* data set with identifier _id_. Upon success, the request will return a _temp_hum_ reading with the deleted values.
 
 ### Example Request
-*DELETE https://featherpad.herokuapp.com/api/temp_hum/update/122*
+*DELETE https://featherpad.herokuapp.com/api/temp_hum/delete/122*
 
 ### Example Response
 ```json
