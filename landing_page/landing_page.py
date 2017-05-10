@@ -28,6 +28,9 @@ app = create_app(FLASK_CONFIG)
 ''' =========================================================================================== '''
 # define our routes
 
+HUMIDITY_JSON_KEY_IDENTIFIER = 'humidity'
+TEMPERATURE_JSON_KEY_IDENTIFIER = 'temperature'
+
 ''' If user tries to access undefined page, post 404 error'''
 @app.errorhandler(404)
 def page_not_found(e):
@@ -94,8 +97,8 @@ def create_temp_hum_reading():
 	if not request.json:
 		return abort(400)
 	values = request.get_json()
-	temp = values['temperature']
-	hum = values['humidity']
+	temp = values[TEMPERATURE_JSON_KEY_IDENTIFIER]
+	hum = values[HUMIDITY_JSON_KEY_IDENTIFIER]
 	new_reading = models.temp_hum(temperature=temp, humidity=hum)
 	db.session.add(new_reading)
 	db.session.commit()
@@ -114,8 +117,8 @@ def update_temp_hum_reading(entry_id):
 	if updated_reading is None:
 		return abort(400)
 
-	updated_reading.temperature = new_values['temperature']
-	updated_reading.humidity = new_values['humidity']
+	updated_reading.temperature = new_values[TEMPERATURE_JSON_KEY_IDENTIFIER]
+	updated_reading.humidity = new_values[HUMIDITY_JSON_KEY_IDENTIFIER]
 
 	db.session.commit()
 
