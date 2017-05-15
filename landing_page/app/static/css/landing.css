@@ -64,6 +64,15 @@ body {
   color: #343434;
 }
 
+.thankyou_content {
+  font-family: "Roboto";
+  font-size: 15px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 17px;
+  color: #343434;
+}
+
 .inner-email-left:hover .message_content{
   display: block
 }
