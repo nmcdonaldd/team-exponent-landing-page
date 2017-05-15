@@ -45,6 +45,7 @@ body {
 
 .message {
   /*font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;*/
+  display: block;
   font-family: "Roboto";
   font-size: 15px;
   font-weight: 500;
@@ -54,12 +55,18 @@ body {
 }
 
 .message_content {
+  display: none;
+
   font-family: "Roboto";
   font-size: 15px;
   font-weight: 300;
   font-style: normal;
   line-height: 17px;
   color: #343434;
+}
+
+.inner-email-left:hover .message_content{
+  display: block
 }
 
 .sincerely {
