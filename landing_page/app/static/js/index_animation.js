@@ -1,11 +1,34 @@
 $(document).ready(function(){
-    console.log("pls");
+    //console.log("pls");
     $("#welcome").hide().fadeIn(2000);
     $(".slogan").hide().fadeIn(3000);
 
+    $("#subscribe-content").hide();
+    $("#why-content").hide();
+    $("#what-content").show();
+
+    $("#what-button").click(function() {
+      console.log("click");
+      $("#subscribe-content").hide(1000);
+      $("#why-content").hide(1000);
+      $("#what-content").show(1000);
+    });
+
+    $("#why-button").click(function() {
+      console.log("click2");
+      $("#subscribe-content").hide(1000);
+      $("#why-content").show(1000);
+      $("#what-content").hide(1000);
+    });
+
+    $("#subscribe-button").click(function() {
+      console.log("clic3242342434k2");
+      $("#subscribe-content").show(1000);
+      $("#why-content").hide(1000);
+      $("#what-content").hide(1000);
+    });
 
     function start() {
-      console.log("wat");
       $("body").animate({
       'background-position-x': '15%',
       'background-position-y': '25%'
