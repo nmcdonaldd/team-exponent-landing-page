@@ -205,6 +205,12 @@ body {
     width: 80%;
     font-size: 0.25em;
   }
+  .data_content {
+    float: auto;
+    margin: auto;
+    width: 80%;
+    font-size: 0.25em;
+  }
 }
 
 @media screen and (min-device-width:900px){
@@ -247,6 +253,12 @@ body {
     height: 1%;
   }
   .thanks-content {
+    float: auto;
+    margin: auto;
+    width: 60%;
+    font-size: 0.5em;
+  }
+  .data_content {
     float: auto;
     margin: auto;
     width: 60%;
@@ -295,6 +307,12 @@ body {
     height: 1%;
   }
   .thanks-content {
+    float: auto;
+    margin: auto;
+    width: 90%;
+    font-size: 0.25em;
+  }
+  .data_content {
     float: auto;
     margin: auto;
     width: 90%;
