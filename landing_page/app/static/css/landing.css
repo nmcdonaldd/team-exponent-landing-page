@@ -166,7 +166,7 @@ body {
   margin: 5% 30% 10% 30%;
 }
 /* For stats.html */
-@media screen  and (max-width: 39.9375em){
+@media screen  and (min-device-wdith:375px) and (max-device-width:667px){
   #what-button{
     width:90%;
     font-style: cursive;
