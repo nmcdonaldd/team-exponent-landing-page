@@ -164,6 +164,7 @@ body {
 
 .featherpad-content {
   margin: 5% 30% 10% 30%;
+
 }
 /* For stats.html */
 @media screen  and (min-device-width:375px) and (max-device-width:667px){
@@ -193,6 +194,7 @@ body {
 
   .featherpad-content {
     width:90%;
+    margin: 5% 30% 10% 30%;
   }
 }
 
