@@ -62,15 +62,6 @@ body {
   color: #343434;
 }
 
-.thankyou_content {
-  font-family: "Roboto";
-  font-size: 15px;
-  font-weight: 300;
-  font-style: normal;
-  line-height: 17px;
-  color: #343434;
-}
-
 .sincerely {
   font-family: 'Brush Script MT', cursive;
   font-size: 24px;
@@ -163,7 +154,10 @@ body {
 
 .featherpad-content {
   margin: 5% 30% 10% 30%;
+}
 
+.thanks-content {
+  margin: 5% 30% 10% 30%;
 }
 /* For stats.html */
 @media screen  and (min-device-width:320px) and (max-device-width:900px){
@@ -246,6 +240,10 @@ body {
     overflow: hidden;
     height: 1%;
   }
+  .thanks-content {
+    font-size: 0.5em;
+  }
+
 }
 
 @media screen and (max-device-width:320px){
