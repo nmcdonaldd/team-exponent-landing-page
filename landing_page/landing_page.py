@@ -85,35 +85,51 @@ def subscribers():
 		jsonToReturn.append({'id': subscriber.id, 'first_name': subscriber.first_name, 'email': subscriber.email})
 	return jsonify(jsonToReturn)
 
-@app.route("/api/temp_hum")
-def temp_hums():
-	all_temp_hum = models.temp_hum.query.all()
+@app.route("/api/<string:device_id>/temp_hum")
+def temp_hums(device_id):
+	# Grab devicePrimaryKey given the mac_address
+	devicePrimaryKey = get_device_primary_key(device_id)
+	if devicePrimaryKey is None:
+		return abort(404)
+	# Now, grab all temp_hum objects that have the device_id = devicePrimaryKey
+	all_temp_hum = models.temp_hum.query.filter_by(device_id=devicePrimaryKey)
 	jsonToReturn = []
 	for value in all_temp_hum:
 		jsonToReturn.append(value.toDict())
 	return jsonify(jsonToReturn)
 
-@app.route("/api/temp_hum/create", methods=["POST"])
+@app.route("/api/<string:device_id>/temp_hum/create", methods=["POST"])
 def create_temp_hum_reading():
 	if not request.json:
 		return abort(400)
 	values = request.get_json()
 	temp = values[TEMPERATURE_JSON_KEY_IDENTIFIER]
 	hum = values[HUMIDITY_JSON_KEY_IDENTIFIER]
-	new_reading = models.temp_hum(temperature=temp, humidity=hum)
+	devicePrimaryKey = get_device_primary_key(device_id)
+	# TODO: Check to make sure the device_id is valid?
+	new_reading = models.temp_hum(temperature=temp, humidity=hum, device_id=devicePrimaryKey)
 	db.session.add(new_reading)
 	db.session.commit()
 
 	return jsonify(new_reading.toDict()), 201
 
-@app.route("/api/temp_hum/update/<int:entry_id>", methods=["PUT"])
+@app.route("/api/<string:device_id>/temp_hum/update/<int:entry_id>", methods=["PUT"])
 def update_temp_hum_reading(entry_id):
 	if not request.json:
 		return abort(400)
 
 	new_values = request.get_json()
-
 	updated_reading = models.temp_hum.query.get(entry_id)
+	devicePrimaryKey = get_device_primary_key(device_id)
+
+	# If the primary key does not exist, we cannot update any values for it!
+	if devicePrimaryKey is None:
+		return abort(404)
+
+	# Ensure that the device_id that is being given matches the id of the device
+	#  of the temp_hum reading requesting to be updated.
+	if updated_reading.id != devicePrimaryKey:
+		return abort(403)
 
 	if updated_reading is None:
 		return abort(400)
@@ -126,9 +142,19 @@ def update_temp_hum_reading(entry_id):
 	return jsonify(updated_reading.toDict()), 201
 
 
-@app.route("/api/temp_hum/delete/<int:entry_id>", methods=["DELETE"])
+@app.route("/api/<string:device_id>/temp_hum/delete/<int:entry_id>", methods=["DELETE"])
 def delete_temp_hum_reading(entry_id):
 	to_delete = models.temp_hum.query.get(entry_id)
+	devicePrimaryKey = get_device_primary_key(device_id)
+
+	# If the primary key does not exist, we cannot update any values for it!
+	if devicePrimaryKey is None:
+		return abort(404)
+
+	# Ensure that the device_id that is being given matches the id of the device
+	#  of the temp_hum reading requesting to be updated.
+	if to_delete.id != devicePrimaryKey:
+		return abort(403)
 
 	if to_delete is None:
 		return abort(400)
@@ -137,6 +163,14 @@ def delete_temp_hum_reading(entry_id):
 	db.session.commit()
 
 	return jsonify(to_delete.toDict()), 201
+
+def get_device_primary_key(device_id):
+	# First, grab the device primary_key associated with the device_id(mac_address) given
+	devicePrimaryKey = models.Device.query.filter_by(mac_address=device_id).first()
+	if devicePrimaryKey is None:
+		return None
+	else:
+		return devicePrimaryKey.id
 
 ''' =========================================================================================== '''
 # run the app
