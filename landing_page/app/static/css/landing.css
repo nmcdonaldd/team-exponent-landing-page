@@ -169,7 +169,7 @@ body {
 @media screen  and (max-width: 320px){
   #welcome{
     width:90%;
-    font-style: Times;
+    font-style: cursive;
     font-weight: bold;
     color: red;
   }
