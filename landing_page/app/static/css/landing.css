@@ -210,7 +210,12 @@ body {
     margin: auto;
     width: 80%;
     font-size: 0.25em;
-    color: red;
+  }
+  .data_content {
+    float: auto;
+    margin: auto;
+    width: 80%;
+    font-size: 0.5em;
   }
 }
 
@@ -264,7 +269,12 @@ body {
     margin: auto;
     width: 60%;
     font-size: 0.5em;
-    color: red;
+  }
+  .data_content {
+    float: auto;
+    margin: auto;
+    width: 60%;
+    font-size: 0.75em;
   }
 
 }
@@ -319,7 +329,12 @@ body {
     margin: auto;
     width: 90%;
     font-size: 0.5em;
-    color: red;
+  }
+  .data_content {
+    float: auto;
+    margin: auto;
+    width: 90%;
+    font-size: 0.75em;
   }
 }
 
