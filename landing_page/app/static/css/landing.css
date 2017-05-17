@@ -194,13 +194,13 @@ body {
 
   .featherpad-content {
     width:80%;
-    height: auto;
+    height: 20em;
     margin: auto;
     float: none;
   }
 
   .message_content {
-    font-size: 4vw;
+    font-size: 2em;
     /*padding: 5% 5% 5% 5%;*/
 
   }
