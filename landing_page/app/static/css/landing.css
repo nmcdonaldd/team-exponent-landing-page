@@ -199,6 +199,9 @@ body {
     overflow: hidden;
     height: 1%;
   }
+  .thanks-content {
+    font-size: 0.25em;
+  }
 }
 
 @media screen and (min-device-width:900px){
@@ -284,6 +287,9 @@ body {
     font-size: 3em;
     overflow: hidden;
     height: 1%;
+  }
+  .thanks-content {
+    font-size: 0.25em;
   }
 }
 
