@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% for force in forces %}
+  <h2>Left: {{ force.force_left }}, Middle: {{ force.force_middle }}, Right: {{ force.force_right }}</h2>
+</br>
+{% endfor %}
+
+
+
+
+{% endblock %}
