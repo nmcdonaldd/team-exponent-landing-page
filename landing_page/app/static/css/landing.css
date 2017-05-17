@@ -194,7 +194,8 @@ body {
 
   .featherpad-content {
     width:80%;
-    height: 80%;
+    display: flex;
+    flex-flow: row;
     margin: auto;
     float: none;
   }
