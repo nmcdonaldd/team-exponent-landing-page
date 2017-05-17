@@ -9,8 +9,9 @@
 /*body {
   background: -webkit-linear-gradient(left, rgba(245, 94, 97, 0), rgba(245, 94, 97, 1));
 } */
+
 body {
-  background: url('../images/clouds2.jpg'); !important;
+  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('../images/clouds2.jpg'); !important;
   width: auto;
   height: auto;
 }
@@ -23,7 +24,6 @@ body {
   border-radius: 10px;
   box-shadow: 2px 2px 2px #000;
 }
-
 
 .thankyou {
   font-family: 'Brush Script MT', cursive;
@@ -55,7 +55,6 @@ body {
 }
 
 .message_content {
-  display: none;
   font-family: "Roboto";
   font-size: 15px;
   font-weight: 300;
@@ -73,45 +72,9 @@ body {
   color: #343434;
 }
 
-.inner-email-left:hover .message_content{
-  display: block
-}
-
-.inner-email-right:hover .message_content{
-  display: block;
-}
 .sincerely {
   font-family: 'Brush Script MT', cursive;
   font-size: 24px;
-}
-
-.inner-email-left {
-  /*position: relative;*/
-  float: left;
-  text-align: center;
-  background-color: Honeydew;
-  margin-left: 5%;
-  margin-right: 70%;
-  box-shadow: 2px 2px 2px #000;
-  padding: 10px 10px 10px 10px;
-  border-radius: 10px;
-}
-
-.inner-email-right {
-  position: absolute;
-  float: right;
-  text-align: center;
-  background-color: Honeydew;
-  margin-right: 5%;
-  margin-left: 70%;
-  box-shadow: 2px 2px 2px #000;
-  padding: 10px 10px 10px 10px;
-  border-radius: 10px;
-
-}
-
-
-.heading {
 }
 
 #welcome {
@@ -119,7 +82,7 @@ body {
   /*font-family: 'Lato', sans-serif;*/
   font-family: 'HelveticaNeue-Thin';
   color: #343434;
-  padding-top: 30px;
+  /*padding-top: 30px;*/
   font-size: 90px;
   /*background-color: green;*/
 }
@@ -135,9 +98,8 @@ body {
   padding-right: 10px;
   padding-left: 10px;
   padding-top: 3px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   border-radius: 10px;
-  /*background-color: yellow;*/
 }
 
 .email-box {
@@ -156,8 +118,11 @@ body {
   border-radius: 10px;
 }
 
-.img {
-  width: 100%;
+#baby-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 50%;
+  max-height: 50%;
 }
 
 
@@ -175,4 +140,37 @@ body {
   border-radius: 10px;
 }
 
+/* For FeatherPad: Sleep Without Barriers title */
+#title {
+  margin: auto;
+  width: 60%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+}
+
+#title-content {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#logo {
+  max-width:90%;
+  max-height:90%;
+}
+
+.featherpad-content {
+  margin: 5% 30% 10% 30%;
+}
 /* For stats.html */
+@media screen  and (max-width: 320px){
+  #what-button{
+    width:90%;
+    font-style: cursive;
+    font-weight: bold;
+    color: red;
+  }
+}
