@@ -193,8 +193,9 @@ body {
   }
 
   .featherpad-content {
-    width:90%;
-    margin: 5% 30% 10% 30%;
+    width:80%;
+    margin: auto;
+    float: none;
   }
 }
 
