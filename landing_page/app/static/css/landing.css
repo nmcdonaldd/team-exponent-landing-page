@@ -169,9 +169,23 @@ body {
 @media screen  and (min-device-width:375px) and (max-device-width:667px){
   #what-button{
     width:90%;
-    height:20%;
-    font-size: 1em;
+    height:40%;
+    font-size: 3em;
     color: red;
+  }
+
+  #why-button{
+    width:90%;
+    height:40%;
+    font-size: 3em;
+    color: green;
+  }
+
+  #subscribe-button{
+    width:90%;
+    height:40%;
+    font-size: 3em;
+    color: blue;
   }
 }
 
