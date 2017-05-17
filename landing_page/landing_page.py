@@ -99,7 +99,7 @@ def temp_hums(device_id):
 	return jsonify(jsonToReturn)
 
 @app.route("/api/<string:device_id>/temp_hum/create", methods=["POST"])
-def create_temp_hum_reading():
+def create_temp_hum_reading(device_id):
 	if not request.json:
 		return abort(400)
 	values = request.get_json()
@@ -114,7 +114,7 @@ def create_temp_hum_reading():
 	return jsonify(new_reading.toDict()), 201
 
 @app.route("/api/<string:device_id>/temp_hum/update/<int:entry_id>", methods=["PUT"])
-def update_temp_hum_reading(entry_id):
+def update_temp_hum_reading(device_id, entry_id):
 	if not request.json:
 		return abort(400)
 
@@ -141,9 +141,41 @@ def update_temp_hum_reading(entry_id):
 
 	return jsonify(updated_reading.toDict()), 201
 
+@app.route("/api/device/<string:device_id>/create", methods=["POST"])
+def newDevice(device_id):
+	devicePrimaryKey = get_device_primary_key(device_id)
+
+	# If the device id is already in use, we cannot create it again!
+	if devicePrimaryKey is not None:
+		return abort(403)
+
+	device = models.Device(macAddress=device_id)
+	db.session.add(device)
+	db.session.commit()
+
+	return jsonify(device.toDict())
+
+@app.route("/api/device/<string:device_id>/delete", methods=["DELETE"])
+def deleteDevice(device_id):
+	devicePrimaryKey = get_device_primary_key(device_id)
+	if devicePrimaryKey is None:
+		print("NONE")
+		return abort(403)
+
+	device_to_delete = models.Device.query.filter_by(mac_address=device_id).first()
+	db.session.delete(device_to_delete)
+	db.session.commit()
+	# TODO: Remove all readings! (i.e. temp_hum, light_sensor, force_reading)
+	'''
+	for reading in all_readings:
+		db.session.delete(reading)
+
+	db.session.commit()
+	'''
+	return jsonify(device_to_delete.toDict())
 
 @app.route("/api/<string:device_id>/temp_hum/delete/<int:entry_id>", methods=["DELETE"])
-def delete_temp_hum_reading(entry_id):
+def delete_temp_hum_reading(device_id, entry_id):
 	to_delete = models.temp_hum.query.get(entry_id)
 	devicePrimaryKey = get_device_primary_key(device_id)
 
