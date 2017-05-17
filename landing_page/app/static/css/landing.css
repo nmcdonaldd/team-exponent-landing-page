@@ -200,7 +200,9 @@ body {
     height: 1%;
   }
   .thanks-content {
-    width: 80%
+    float: auto;
+    margin: auto;
+    width: 80%;
     font-size: 0.25em;
   }
 }
@@ -245,6 +247,8 @@ body {
     height: 1%;
   }
   .thanks-content {
+    float: auto;
+    margin: auto;
     width: 60%;
     font-size: 0.5em;
   }
@@ -291,6 +295,8 @@ body {
     height: 1%;
   }
   .thanks-content {
+    float: auto;
+    margin: auto;
     width: 90%;
     font-size: 0.25em;
   }
