@@ -13,6 +13,7 @@
   #what-button{
     width:90%;
     font-style: Times;
+    font-weight: bold;
     color: red;
   }
 }
