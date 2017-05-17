@@ -71,13 +71,6 @@ body {
   color: #343434;
 }
 
-.inner-email-left:hover .message_content{
-  display: block
-}
-
-.inner-email-right:hover .message_content{
-  display: block;
-}
 .sincerely {
   font-family: 'Brush Script MT', cursive;
   font-size: 24px;
