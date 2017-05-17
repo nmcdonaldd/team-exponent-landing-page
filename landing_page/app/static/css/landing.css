@@ -172,7 +172,7 @@ body {
     height:30%;
     font-size: 1.5em;
     color: red;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
 
   #why-button{
@@ -180,7 +180,7 @@ body {
     height:30%;
     font-size: 1.5em;
     color: green;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
 
   #subscribe-button{
@@ -188,10 +188,10 @@ body {
     height:30%;
     font-size: 1.5em;
     color: blue;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
 
-  #featherpad-content {
+  .featherpad-content {
     width:90%;
   }
 }
