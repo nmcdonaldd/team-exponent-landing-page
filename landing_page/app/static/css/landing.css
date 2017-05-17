@@ -167,7 +167,7 @@ body {
 }
 /* For stats.html */
 @media screen  and (max-width: 320px){
-  #welcome{
+  #what-button{
     width:90%;
     font-style: cursive;
     font-weight: bold;
