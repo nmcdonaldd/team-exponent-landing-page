@@ -21,16 +21,30 @@ class Visitor(db.Model):
     def __init__(self):
         pass
 
+class Device(db.Model):
+    __tablename__ = 'devices'
+    id = db.Column(db.Integer, primary_key=True)
+    mac_address = db.Column(db.String(34), nullable=False)
+
+    def toDict(self):
+        return {'device_id': self.mac_address}
+
+    def __init__(self, macAddress):
+        self.mac_address = macAddress
+        pass
+
 class temp_hum(db.Model):
     __tablename__ = 'temp_hum'
     id = db.Column(db.Integer, primary_key=True)
     temperature = db.Column(db.Integer, index=True, nullable=True)
     humidity = db.Column(db.Integer, index=True, nullable=True)
     timestamp = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=func.current_timestamp())
+    device_id = db.Column(db.Integer, db.ForeignKey('devices.id'))
 
-    def __init__(self, temperature, humidity):
+    def __init__(self, temperature, humidity, device_id):
         self.temperature = temperature
         self.humidity = humidity
+        self.device_id = device_id
 
     def toDict(self):
         return {'id': self.id, 'temperature': self.temperature, 'humidity': self.humidity, 'timestamp': self.timestamp}
