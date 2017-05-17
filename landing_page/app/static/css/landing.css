@@ -204,15 +204,16 @@ body {
     /*padding: 5% 5% 5% 5%;*/
   }
   .field {
+    font-size: 3em
     overflow: hidden;
     height: 1%;
   }
 
   #email{
-    font-size: 3em;
+    font-size: 2em;
   }
   #name{
-    font-size: 3em;
+    font-size: 2em;
   }
 }
 
