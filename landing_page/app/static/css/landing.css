@@ -211,9 +211,11 @@ body {
 
   #email{
     font-size: 5px; !important;
+    color: red;
   }
   #name{
     font-size: 1em;
+    color: green;
   }
 }
 
