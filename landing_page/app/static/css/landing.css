@@ -251,26 +251,23 @@ body {
 @media screen and (max-device-width:320px){
   #what-button{
     width:90%;
-    height:30%;
+    height: 45%;
     font-size: 1.5em;
-    color: red;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
   }
 
   #why-button{
     width:90%;
-    height:30%;
+    height:45%;
     font-size: 1.5em;
-    color: green;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
   }
 
   #subscribe-button{
     width:90%;
-    height:30%;
+    height:45%;
     font-size: 1.5em;
-    color: blue;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
   }
 
   .featherpad-content {
