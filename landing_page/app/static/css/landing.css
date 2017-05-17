@@ -214,21 +214,21 @@ body {
   #what-button{
     width:25%;
     height:10%;
-    font-size: 0.6em;
+    font-size: 0.4em;
     margin-bottom: 5%;
   }
 
   #why-button{
     width:25%;
     height:10%;
-    font-size: 0.6em;
+    font-size: 0.4em;
     margin-bottom: 5%;
   }
 
   #subscribe-button{
     width:25%;
     height:10%;
-    font-size: 0.6em;
+    font-size: 0.4em;
     margin-bottom: 5%;
   }
 
@@ -241,7 +241,7 @@ body {
   }
 
   .message_content {
-    font-size: 0.6em;
+    font-size: 1em;
     /*padding: 5% 5% 5% 5%;*/
   }
   .field {
