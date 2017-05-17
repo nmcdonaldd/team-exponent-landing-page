@@ -10,7 +10,7 @@
   background: -webkit-linear-gradient(left, rgba(245, 94, 97, 0), rgba(245, 94, 97, 1));
 } */
 @media screen  and (min-device-width : 375px) and (max-device-width : 667px){
-  button{
+  body{
     width:90%;
     color: red;
   }
