@@ -106,7 +106,12 @@ def create_temp_hum_reading(device_id):
 	temp = values[TEMPERATURE_JSON_KEY_IDENTIFIER]
 	hum = values[HUMIDITY_JSON_KEY_IDENTIFIER]
 	devicePrimaryKey = get_device_primary_key(device_id)
-	# TODO: Check to make sure the device_id is valid?
+
+	# If the primary key does not exist, we cannot create any values for it!
+	# (i.e. that device must be registered first.)
+	if devicePrimaryKey is None:
+		return abort(404)
+
 	new_reading = models.temp_hum(temperature=temp, humidity=hum, device_id=devicePrimaryKey)
 	db.session.add(new_reading)
 	db.session.commit()
