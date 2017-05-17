@@ -203,6 +203,11 @@ body {
     font-size: 3em;
     /*padding: 5% 5% 5% 5%;*/
   }
+  .field {
+    overflow: hidden;
+    height: 1%;
+  }
+
   div input {
     font-size: 3em;
   }
