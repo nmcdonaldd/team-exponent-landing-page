@@ -210,7 +210,7 @@ body {
   }
 
   #email{
-    font-size: 1em;
+    font-size: 1em; !important;
   }
   #name{
     font-size: 1em;
