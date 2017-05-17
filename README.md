@@ -5,11 +5,11 @@ Link to webpage can be found [here](https://featherpad.herokuapp.com/).
 
 ## FeatherPad API Endpoints
 
-+ [/api/subscribers](https://github.com/nmcdonaldd/team-exponent-landing-page#apisubscribers)
-+ [/api/temp_hum](https://github.com/nmcdonaldd/team-exponent-landing-page#apitemp_hum)
-+ [/api/temp_hum/create](https://github.com/nmcdonaldd/team-exponent-landing-page#apitemp_humcreate)
-+ [/api/temp_hum/update/<_id_>](https://github.com/nmcdonaldd/team-exponent-landing-page#apitemp_humupdateid)
-+ [/api/temp_hum/delete/<_id_>](https://github.com/nmcdonaldd/team-exponent-landing-page#apitemp_humdeleteid)
++ [/api/<string:device_id>/subscribers](https://github.com/nmcdonaldd/team-exponent-landing-page#apisubscribers)
++ [/api/<string:device_id>/temp_hum](https://github.com/nmcdonaldd/team-exponent-landing-page#apitemp_hum)
++ [/api/<string:device_id>/temp_hum/create](https://github.com/nmcdonaldd/team-exponent-landing-page#apitemp_humcreate)
++ [/api/<string:device_id>/temp_hum/update/<_id_>](https://github.com/nmcdonaldd/team-exponent-landing-page#apitemp_humupdateid)
++ [/api/<string:device_id>/temp_hum/delete/<_id_>](https://github.com/nmcdonaldd/team-exponent-landing-page#apitemp_humdeleteid)
 
 #
 ### /api/subscribers
@@ -70,7 +70,7 @@ Returns a collection of users in JSON format that have subscribed to our website
 ```
 
 #
-### /api/temp_hum
+### /api/<_device_id_>/temp_hum
 Returns a collection of temperature and humidity readings taken from our prototype FeatherPad unit in JSON format. Temperature is given in degrees Celsius and humidity is given as a percentage.
 
 ### Example Request
@@ -143,8 +143,8 @@ Returns a collection of temperature and humidity readings taken from our prototy
 ```
 
 #
-### /api/temp_hum/create
-Adds a new *temp_hum reading* data set with the provided temperature and humidity. Note, a set of temperature and humidity data must be passed with the request. Upon success, the request will return a _temp_hum_ reading with new values.
+### /api/<_device_id_>/temp_hum/create
+Adds a new _temp_hum reading_ data set with the provided temperature and humidity. Note, a set of temperature and humidity data must be passed with the request. Upon success, the request will return a _temp_hum_ reading with new values.
 
 ### Example Request
 *POST https://featherpad.herokuapp.com/api/temp_hum/create*
@@ -166,8 +166,8 @@ Adds a new *temp_hum reading* data set with the provided temperature and humidit
 ```
 
 #
-### /api/temp_hum/update/<_id_>
-Updates the *temp_hum reading* data set with identifier _id_. Note, a set of temperature and humidity data must be passed with the request. Upon success, the request will return a _temp_hum_ reading with updated values.
+### /api/<_device_id_>/temp_hum/update/<_id_>
+Updates the _temp_hum reading_ data set with identifier _id_. Note, a set of temperature and humidity data must be passed with the request. Upon success, the request will return a _temp_hum_ reading with updated values.
 
 ### Example Request
 *PUT https://featherpad.herokuapp.com/api/temp_hum/update/122*
@@ -189,8 +189,8 @@ Updates the *temp_hum reading* data set with identifier _id_. Note, a set of tem
 ```
 
 #
-### /api/temp_hum/delete/<_id_>
-Deletes the *temp_hum reading* data set with identifier _id_. Upon success, the request will return a _temp_hum_ reading with the deleted values.
+### /api/<_device_id_>/temp_hum/delete/<_id_>
+Deletes the _temp_hum reading_ data set with identifier _id_. Upon success, the request will return a _temp_hum_ reading with the deleted values.
 
 ### Example Request
 *DELETE https://featherpad.herokuapp.com/api/temp_hum/delete/122*
