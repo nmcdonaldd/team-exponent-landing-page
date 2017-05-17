@@ -195,6 +195,7 @@ body {
   .featherpad-content {
     width:80%;
     font-size: 1em;
+    height: auto;
     margin: auto;
     float: none;
   }
