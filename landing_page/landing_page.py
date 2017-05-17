@@ -140,8 +140,10 @@ def delete_temp_hum_reading(entry_id):
 
 @app.route("/display_data/<int:device_id>")
 def get_data(device_id):
-	all_forces = models.force.query.all()
+	all_forces = models.force_reading.query.all()
 	all_temp_hum = models.temp_hum.query.all()
+
+	print(all_temp_hum)
 	return render_template("home/api_data.html", forces = all_forces, temps_hums = all_temp_hum)
 
 

@@ -1,10 +1,52 @@
 {% extends "layout.html" %}
 {% block body %}
 
-{% for force in forces %}
-  <h2>Left: {{ force.force_left }}, Middle: {{ force.force_middle }}, Right: {{ force.force_right }}</h2>
-</br>
-{% endfor %}
+<br/>
+
+<p class="message_content"> The temperature and humidity readings at a specified
+time recorded on your FeatherPad device. </p>
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <th>Tempearture [Celsius]</th>
+      <th>Humidity [%]</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for value in temps_hums  %}
+    <tr>
+      <td>{{ value.temperature }}</td>
+      <td>{{ value.humidity }}</td>
+      <td>{{ value.timestamp }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<br/>
+
+<p class="message_content"> The greater the number on the left and right columns imply that there is a great
+amount of force on the sides of the pad. A middle sensor value implies that your baby
+is on the pad. </p>
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <th>Left Sensor</th>
+      <th>Middle Sensor</th>
+      <th>Right Sensor</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for force in forces %}
+    <tr>
+      <td>{{ force.force_left }}</td>
+      <td>{{ force.force_middle }}</td>
+      <td>{{ force.force_right }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 
 
