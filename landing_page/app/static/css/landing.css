@@ -194,7 +194,8 @@ body {
 
   .featherpad-content {
     width:80%;
-    overflow: auto;
+    overflow: hidden;
+    height: 1%;
     margin: auto;
     float: auto;
   }
