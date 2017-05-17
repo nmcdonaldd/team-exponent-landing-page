@@ -59,7 +59,6 @@ body {
   font-size: 15px;
   font-weight: 300;
   font-style: normal;
-  line-height: 17px;
   color: #343434;
 }
 
@@ -164,13 +163,145 @@ body {
 
 .featherpad-content {
   margin: 5% 30% 10% 30%;
+
 }
 /* For stats.html */
-@media screen  and (max-width: 320px){
+@media screen  and (min-device-width:320px) and (max-device-width:900px){
   #what-button{
     width:90%;
-    font-style: cursive;
-    font-weight: bold;
-    color: red;
+    height:30%;
+    font-size: 1.5em;
+    margin-bottom: 5%;
+  }
+
+  #why-button{
+    width:90%;
+    height:30%;
+    font-size: 1.5em;
+    margin-bottom: 5%;
+  }
+
+  #subscribe-button{
+    width:90%;
+    height:30%;
+    font-size: 1.5em;
+    margin-bottom: 5%;
+  }
+
+  .featherpad-content {
+    width:80%;
+    overflow: hidden;
+    height: 1%;
+    margin: auto;
+    float: auto;
+  }
+
+  .message_content {
+    font-size: 3em;
+    /*padding: 5% 5% 5% 5%;*/
+  }
+  .field {
+    font-size: 3em;
+    overflow: hidden;
+    height: 1%;
   }
 }
+
+@media screen and (min-device-width:900px){
+  #what-button{
+    width:25%;
+    height:10%;
+    font-size: 0.4em;
+    margin-bottom: 5%;
+  }
+
+  #why-button{
+    width:25%;
+    height:10%;
+    font-size: 0.4em;
+    margin-bottom: 5%;
+  }
+
+  #subscribe-button{
+    width:25%;
+    height:10%;
+    font-size: 0.4em;
+    margin-bottom: 5%;
+  }
+
+  .featherpad-content {
+    width:60%;
+    overflow: hidden;
+    height: 1%;
+    margin: auto;
+    float: auto;
+  }
+
+  .message_content {
+    font-size: 1em;
+    /*padding: 5% 5% 5% 5%;*/
+  }
+  .field {
+    font-size: 1.5em;
+    overflow: hidden;
+    height: 1%;
+  }
+}
+
+@media screen and (max-device-width:320px){
+  #what-button{
+    width:90%;
+    height: 45%;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+  }
+
+  #why-button{
+    width:90%;
+    height:45%;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+  }
+
+  #subscribe-button{
+    width:90%;
+    height:45%;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+  }
+
+  .featherpad-content {
+    width:80%;
+    overflow: hidden;
+    height: 1%;
+    margin: auto;
+    float: auto;
+  }
+
+  .message_content {
+    font-size: 3em;
+    /*padding: 5% 5% 5% 5%;*/
+  }
+  .field {
+    font-size: 3em;
+    overflow: hidden;
+    height: 1%;
+  }
+}
+
+  /*#email{
+    font-size: 5px; !important;
+    color: red;
+  }
+  #name{
+    font-size: 1em;
+    color: green;
+  }
+}*/
+
+/*@media screen  and (min-device-width:375px) and (max-device-width:667px){
+  #what-button{
+
+  }
+
+}*/
