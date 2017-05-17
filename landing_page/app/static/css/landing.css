@@ -208,7 +208,10 @@ body {
     height: 1%;
   }
 
-  div input {
+  #email{
+    font-size: 3em;
+  }
+  #name{
     font-size: 3em;
   }
 }
