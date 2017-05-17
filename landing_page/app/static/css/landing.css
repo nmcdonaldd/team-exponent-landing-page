@@ -194,9 +194,9 @@ body {
 
   .featherpad-content {
     width:80%;
-    overflow: auto
+    overflow: auto;
     margin: auto;
-    float: none;
+    float: auto;
   }
 
   .message_content {
