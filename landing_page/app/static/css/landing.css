@@ -9,6 +9,12 @@
 /*body {
   background: -webkit-linear-gradient(left, rgba(245, 94, 97, 0), rgba(245, 94, 97, 1));
 } */
+@media screen and (min-width: 320px) and (max-width: 900px){
+  .message_content{
+    width:50%;
+    color: red;
+  }
+}
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('../images/clouds2.jpg'); !important;
   width: auto;
