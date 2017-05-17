@@ -9,7 +9,7 @@
 /*body {
   background: -webkit-linear-gradient(left, rgba(245, 94, 97, 0), rgba(245, 94, 97, 1));
 } */
-@media only screen  and (min-width : 375px) and (max-width : 667px){
+@media only screen  and (min-width : 375px) and (max-width : 667px) and (orientation: portrait){
   #what-button{
     width:90%;
     font-style: Times;
