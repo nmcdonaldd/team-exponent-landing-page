@@ -9,14 +9,7 @@
 /*body {
   background: -webkit-linear-gradient(left, rgba(245, 94, 97, 0), rgba(245, 94, 97, 1));
 } */
-@media screen  and (max-width: 320px){
-  #what-button{
-    width:90%;
-    font-style: Times;
-    font-weight: bold;
-    color: red;
-  }
-}
+
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('../images/clouds2.jpg'); !important;
   width: auto;
@@ -173,3 +166,11 @@ body {
   margin: 5% 30% 10% 30%;
 }
 /* For stats.html */
+@media screen  and (max-width: 320px){
+  #what-button{
+    width:90%;
+    font-style: Times;
+    font-weight: bold;
+    color: red;
+  }
+}
