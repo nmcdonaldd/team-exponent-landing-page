@@ -214,7 +214,7 @@ body {
   #what-button{
     width:25%;
     height:10%;
-    font-size: 1.5em;
+    font-size: 0.3em;
     color: red;
     margin-bottom: 5%;
   }
@@ -222,7 +222,7 @@ body {
   #why-button{
     width:25%;
     height:10%;
-    font-size: 1.5em;
+    font-size: 0.3em;
     color: green;
     margin-bottom: 5%;
   }
@@ -230,7 +230,7 @@ body {
   #subscribe-button{
     width:25%;
     height:10%;
-    font-size: 1.5em;
+    font-size: 0.3em;
     color: blue;
     margin-bottom: 5%;
   }
