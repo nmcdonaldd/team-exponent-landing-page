@@ -9,12 +9,15 @@ from flask import redirect
 from flask import session
 from flask import jsonify
 from flask import abort
+from flask import url_for   #what
+
 
 # local imports
 from app import create_app
 from app import models
 from app import db
 from env import FLASK_CONFIG
+
 
 # pythong libraries
 from datetime import datetime
@@ -48,7 +51,19 @@ def chat_view():
 	db.session.commit()
 	return render_template('home/index.html', title='Home')
 
-@app.route('/submit', methods=['POST'])
+
+@app.route('/submit_login', methods=['POST'])
+def logging_in():
+	the_username = request.form['username']
+	the_password = request.form['password']
+
+
+
+	print("going here!!!!!!!!!!", the_username)
+	return redirect(url_for('get_data', device_id=the_username))
+
+
+@app.route('/submit_subscribe', methods=['POST'])
 def subscribing():
 	the_subscriber_fname = request.form['name']
 	the_subscriber_email = request.form['email_address']
