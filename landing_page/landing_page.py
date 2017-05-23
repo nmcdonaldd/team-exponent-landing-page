@@ -159,7 +159,6 @@ def newDevice(device_id):
 def deleteDevice(device_id):
 	devicePrimaryKey = get_device_primary_key(device_id)
 	if devicePrimaryKey is None:
-		print("NONE")
 		return abort(403)
 
 	device_to_delete = models.Device.query.filter_by(mac_address=device_id).first()
