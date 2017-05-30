@@ -50,6 +50,13 @@ def chat_view():
 	return render_template('home/index.html', title='Home')
 
 
+@app.route('/api/login_mobile/create/<string:username>/<string:password>', methods=['POST'])
+def mobile_login(username, password):
+	# Should do some sort of checking to make sure that the username and password works.
+	# TODO: FIX THE FOLLOWING.
+	device = models.Device.query.all()[0]	# This should be the 1234 device.
+	return jsonify(device.toDict())
+
 @app.route('/submit_login', methods=['POST'])
 def logging_in():
 	the_username = request.form['username']
