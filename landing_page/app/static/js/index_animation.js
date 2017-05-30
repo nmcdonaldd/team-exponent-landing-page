@@ -1,11 +1,13 @@
 $(document).ready(function(){
     //console.log("pls");
+
     $("#welcome").hide().fadeIn(2000);
     $(".slogan").hide().fadeIn(3000);
 
     $("#subscribe-content").hide();
     $("#why-content").hide();
     $("#what-content").show();
+    $("#login-form").hide();
 
     $("#what-button").click(function() {
       console.log("click");
@@ -26,6 +28,11 @@ $(document).ready(function(){
       $("#subscribe-content").show(1000);
       $("#why-content").hide(1000);
       $("#what-content").hide(1000);
+    });
+
+    $("#login-button").click(function() {
+      console.log("login yo");
+      $("#login-modal").modal('show');
     });
 
     function start() {
