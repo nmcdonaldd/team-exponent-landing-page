@@ -11,13 +11,11 @@ from flask import jsonify
 from flask import abort
 from flask import url_for   #what
 
-
 # local imports
 from app import create_app
 from app import models
 from app import db
 from env import FLASK_CONFIG
-
 
 # pythong libraries
 from datetime import datetime
@@ -57,13 +55,10 @@ def logging_in():
 	the_username = request.form['username']
 	the_password = request.form['password']
 
-
-
 	print("going here!!!!!!!!!!", the_username)
 	return redirect(url_for('get_data', device_id=the_username))
 
-
-@app.route('/submit_subscribe', methods=['POST'])
+@app.route('/submit', methods=['POST'])
 def subscribing():
 	the_subscriber_fname = request.form['name']
 	the_subscriber_email = request.form['email_address']
@@ -100,35 +95,51 @@ def subscribers():
 		jsonToReturn.append({'id': subscriber.id, 'first_name': subscriber.first_name, 'email': subscriber.email})
 	return jsonify(jsonToReturn)
 
-@app.route("/api/temp_hum")
-def temp_hums():
-	all_temp_hum = models.temp_hum.query.all()
+@app.route("/api/<string:device_id>/temp_hum")
+def temp_hums(device_id):
+	# Grab devicePrimaryKey given the mac_address
+	devicePrimaryKey = get_device_primary_key(device_id)
+	if devicePrimaryKey is None:
+		return abort(404)
+	# Now, grab all temp_hum objects that have the device_id = devicePrimaryKey
+	all_temp_hum = models.temp_hum.query.filter_by(device_id=devicePrimaryKey)
 	jsonToReturn = []
 	for value in all_temp_hum:
 		jsonToReturn.append(value.toDict())
 	return jsonify(jsonToReturn)
 
-@app.route("/api/temp_hum/create", methods=["POST"])
-def create_temp_hum_reading():
+@app.route("/api/<string:device_id>/temp_hum/create", methods=["POST"])
+def create_temp_hum_reading(device_id):
 	if not request.json:
 		return abort(400)
 	values = request.get_json()
 	temp = values[TEMPERATURE_JSON_KEY_IDENTIFIER]
 	hum = values[HUMIDITY_JSON_KEY_IDENTIFIER]
-	new_reading = models.temp_hum(temperature=temp, humidity=hum)
+	devicePrimaryKey = get_device_primary_key(device_id)
+	# TODO: Check to make sure the device_id is valid?
+	new_reading = models.temp_hum(temperature=temp, humidity=hum, device_id=devicePrimaryKey)
 	db.session.add(new_reading)
 	db.session.commit()
 
 	return jsonify(new_reading.toDict()), 201
 
-@app.route("/api/temp_hum/update/<int:entry_id>", methods=["PUT"])
-def update_temp_hum_reading(entry_id):
+@app.route("/api/<string:device_id>/temp_hum/update/<int:entry_id>", methods=["PUT"])
+def update_temp_hum_reading(device_id, entry_id):
 	if not request.json:
 		return abort(400)
 
 	new_values = request.get_json()
-
 	updated_reading = models.temp_hum.query.get(entry_id)
+	devicePrimaryKey = get_device_primary_key(device_id)
+
+	# If the primary key does not exist, we cannot update any values for it!
+	if devicePrimaryKey is None:
+		return abort(404)
+
+	# Ensure that the device_id that is being given matches the id of the device
+	#  of the temp_hum reading requesting to be updated.
+	if updated_reading.id != devicePrimaryKey:
+		return abort(403)
 
 	if updated_reading is None:
 		return abort(400)
@@ -140,10 +151,51 @@ def update_temp_hum_reading(entry_id):
 
 	return jsonify(updated_reading.toDict()), 201
 
+@app.route("/api/device/<string:device_id>/create", methods=["POST"])
+def newDevice(device_id):
+	devicePrimaryKey = get_device_primary_key(device_id)
 
-@app.route("/api/temp_hum/delete/<int:entry_id>", methods=["DELETE"])
-def delete_temp_hum_reading(entry_id):
+	# If the device id is already in use, we cannot create it again!
+	if devicePrimaryKey is not None:
+		return abort(403)
+
+	device = models.Device(macAddress=device_id)
+	db.session.add(device)
+	db.session.commit()
+
+	return jsonify(device.toDict())
+
+@app.route("/api/device/<string:device_id>/delete", methods=["DELETE"])
+def deleteDevice(device_id):
+	devicePrimaryKey = get_device_primary_key(device_id)
+	if devicePrimaryKey is None:
+		return abort(403)
+
+	device_to_delete = models.Device.query.filter_by(mac_address=device_id).first()
+	db.session.delete(device_to_delete)
+	db.session.commit()
+	# TODO: Remove all readings! (i.e. temp_hum, light_sensor, force_reading)
+	'''
+	for reading in all_readings:
+		db.session.delete(reading)
+
+	db.session.commit()
+	'''
+	return jsonify(device_to_delete.toDict())
+
+@app.route("/api/<string:device_id>/temp_hum/delete/<int:entry_id>", methods=["DELETE"])
+def delete_temp_hum_reading(device_id, entry_id):
 	to_delete = models.temp_hum.query.get(entry_id)
+	devicePrimaryKey = get_device_primary_key(device_id)
+
+	# If the primary key does not exist, we cannot update any values for it!
+	if devicePrimaryKey is None:
+		return abort(404)
+
+	# Ensure that the device_id that is being given matches the id of the device
+	#  of the temp_hum reading requesting to be updated.
+	if to_delete.id != devicePrimaryKey:
+		return abort(403)
 
 	if to_delete is None:
 		return abort(400)
@@ -161,7 +213,13 @@ def get_data(device_id):
 	print(all_temp_hum)
 	return render_template("home/api_data.html", forces = all_forces, temps_hums = all_temp_hum)
 
-
+def get_device_primary_key(device_id):
+	# First, grab the device primary_key associated with the device_id(mac_address) given
+	devicePrimaryKey = models.Device.query.filter_by(mac_address=device_id).first()
+	if devicePrimaryKey is None:
+		return None
+	else:
+		return devicePrimaryKey.id
 
 ''' =========================================================================================== '''
 # run the app
