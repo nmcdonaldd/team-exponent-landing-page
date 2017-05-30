@@ -48,6 +48,15 @@ def chat_view():
 	db.session.commit()
 	return render_template('home/index.html', title='Home')
 
+
+@app.route('/submit_login', methods=['POST'])
+def logging_in():
+	the_username = request.form['username']
+	the_password = request.form['password']
+
+	print("going here!!!!!!!!!!", the_username)
+	return redirect(url_for('get_data', device_id=the_username))
+
 @app.route('/submit', methods=['POST'])
 def subscribing():
 	the_subscriber_fname = request.form['name']
@@ -194,6 +203,14 @@ def delete_temp_hum_reading(device_id, entry_id):
 	db.session.commit()
 
 	return jsonify(to_delete.toDict()), 201
+
+@app.route("/display_data/<int:device_id>")
+def get_data(device_id):
+	all_forces = models.force_reading.query.all()
+	all_temp_hum = models.temp_hum.query.all()
+
+	print(all_temp_hum)
+	return render_template("home/api_data.html", forces = all_forces, temps_hums = all_temp_hum)
 
 def get_device_primary_key(device_id):
 	# First, grab the device primary_key associated with the device_id(mac_address) given
