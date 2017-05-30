@@ -57,11 +57,8 @@ def logging_in():
 	the_username = request.form['username']
 	the_password = request.form['password']
 
-
-
 	print("going here!!!!!!!!!!", the_username)
 	return redirect(url_for('get_data', device_id=the_username))
-
 
 @app.route('/submit_subscribe', methods=['POST'])
 def subscribing():
@@ -140,9 +137,27 @@ def update_temp_hum_reading(entry_id):
 
 	return jsonify(updated_reading.toDict()), 201
 
+@app.route("/api/device/<string:device_id>/delete", methods=["DELETE"])
+def deleteDevice(device_id):
+	devicePrimaryKey = get_device_primary_key(device_id)
+	if devicePrimaryKey is None:
+		return abort(403)
 
-@app.route("/api/temp_hum/delete/<int:entry_id>", methods=["DELETE"])
-def delete_temp_hum_reading(entry_id):
+	device_to_delete = models.Device.query.filter_by(mac_address=device_id).first()
+	db.session.delete(device_to_delete)
+	db.session.commit()
+	# TODO: Remove all readings! (i.e. temp_hum, light_sensor, force_reading)
+	'''
+	for reading in all_readings:
+		db.session.delete(reading)
+
+	db.session.commit()
+	'''
+	return jsonify(device_to_delete.toDict())
+
+@app.route("/api/<string:device_id>/temp_hum/delete/<int:entry_id>", methods=["DELETE"])
+def delete_temp_hum_reading(device_id, entry_id):
+
 	to_delete = models.temp_hum.query.get(entry_id)
 
 	if to_delete is None:
@@ -161,8 +176,14 @@ def get_data(device_id):
 	print(all_temp_hum)
 	return render_template("home/api_data.html", forces = all_forces, temps_hums = all_temp_hum)
 
-
-
+def get_device_primary_key(device_id):
+	# First, grab the device primary_key associated with the device_id(mac_address) given
+	devicePrimaryKey = models.Device.query.filter_by(mac_address=device_id).first()
+	if devicePrimaryKey is None:
+		return None
+	else:
+		return devicePrimaryKey.id
+  
 ''' =========================================================================================== '''
 # run the app
 if __name__ == '__main__':

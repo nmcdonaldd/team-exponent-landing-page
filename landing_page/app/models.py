@@ -7,7 +7,7 @@ class Subscriber(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(60), index=True, nullable=False)
     email = db.Column(db.String(60), index=True, nullable=False)
-    time = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=str(datetime.now().strftime("%m/%d/%Y %H:%M")))
+    time = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=func.current_timestamp())
 
     def __init__(self, first_name, email):
         self.first_name = first_name
@@ -16,7 +16,7 @@ class Subscriber(db.Model):
 class Visitor(db.Model):
     __tablename__ = 'visitors'
     id = db.Column(db.Integer, primary_key=True)
-    time = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=str(datetime.now().strftime("%m/%d/%Y %H:%M")))
+    time = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=func.current_timestamp())
 
     def __init__(self):
         pass
