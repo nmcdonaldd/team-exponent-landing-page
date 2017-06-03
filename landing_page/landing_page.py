@@ -108,7 +108,7 @@ def subscribers():
 		jsonToReturn.append({'id': subscriber.id, 'first_name': subscriber.first_name, 'email': subscriber.email})
 	return jsonify(jsonToReturn)
 
-@app.route("/api/<string:device_id>/temp_hum")
+@app.route("/api/temp_hum/<string:device_id>")
 def temp_hums(device_id):
 	# Grab devicePrimaryKey given the mac_address
 	devicePrimaryKey = get_device_primary_key(device_id)
@@ -121,7 +121,7 @@ def temp_hums(device_id):
 		jsonToReturn.append(value.toDict())
 	return jsonify(jsonToReturn)
 
-@app.route("/api/<string:device_id>/temp_hum/create", methods=["POST"])
+@app.route("/api/temp_hum/create/<string:device_id>", methods=["POST"])
 def create_temp_hum_reading(device_id):
 	if not request.json:
 		return abort(400)
@@ -136,7 +136,7 @@ def create_temp_hum_reading(device_id):
 
 	return jsonify(new_reading.toDict()), 201
 
-@app.route("/api/<string:device_id>/temp_hum/update/<int:entry_id>", methods=["PUT"])
+@app.route("/api/temp_hum/update/<string:device_id>/<int:entry_id>", methods=["PUT"])
 def update_temp_hum_reading(device_id, entry_id):
 	if not request.json:
 		return abort(400)
@@ -164,7 +164,7 @@ def update_temp_hum_reading(device_id, entry_id):
 
 	return jsonify(updated_reading.toDict()), 201
 
-@app.route("/api/device/<string:device_id>/create", methods=["POST"])
+@app.route("/api/device/create/<string:device_id>", methods=["POST"])
 def newDevice(device_id):
 	devicePrimaryKey = get_device_primary_key(device_id)
 
@@ -178,7 +178,7 @@ def newDevice(device_id):
 
 	return jsonify(device.toDict())
 
-@app.route("/api/device/<string:device_id>/delete", methods=["DELETE"])
+@app.route("/api/device/delete/<string:device_id>", methods=["DELETE"])
 def deleteDevice(device_id):
 	devicePrimaryKey = get_device_primary_key(device_id)
 	if devicePrimaryKey is None:
@@ -196,7 +196,7 @@ def deleteDevice(device_id):
 	'''
 	return jsonify(device_to_delete.toDict())
 
-@app.route("/api/<string:device_id>/temp_hum/delete/<int:entry_id>", methods=["DELETE"])
+@app.route("/api/temp_hum/delete/<string:device_id>/<int:entry_id>", methods=["DELETE"])
 def delete_temp_hum_reading(device_id, entry_id):
 	to_delete = models.temp_hum.query.get(entry_id)
 	devicePrimaryKey = get_device_primary_key(device_id)
