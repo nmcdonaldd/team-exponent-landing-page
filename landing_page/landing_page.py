@@ -60,8 +60,8 @@ def mobile_login(username, password):
 		toReturn.append(device.toDict())
 	return jsonify(toReturn)
 
-@app.route("/login/<string:username>", methods=['POST'])
-def logging_in(username):
+@app.route("/login", methods=['POST'])
+def logging_in():
 	the_username = request.form['username']
 	the_password = request.form['password']
 
