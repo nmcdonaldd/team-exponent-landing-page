@@ -60,7 +60,7 @@ def mobile_login(username, password):
 		toReturn.append(device.toDict())
 	return jsonify(toReturn)
 
-@app.route('/submit_login', methods=['POST'])
+@app.route("/login", methods=['POST'])
 def logging_in():
 	the_username = request.form['username']
 	the_password = request.form['password']
@@ -68,7 +68,7 @@ def logging_in():
 	user = models.User.query.filter_by(username = the_username).first()
 	if user is not None and the_password == user.password:
 		session['the_user'] = user
-		return render_template('home/profile.html')
+		return render_template('home/profile.html', username = the_username)
 	return redirect('/')
 
 @app.route('/submit', methods=['POST'])
