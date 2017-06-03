@@ -65,8 +65,11 @@ def logging_in():
 	the_username = request.form['username']
 	the_password = request.form['password']
 
-	print("going here!!!!!!!!!!", the_username)
-	return redirect(url_for('get_data', device_id=the_username))
+	user = models.User.query.filter_by(username = the_username).first()
+	if user is not None and the_password == user.password:
+		session['the_user'] = user
+		return render_template('home/profile.html')
+	reutrn redirect('/')
 
 @app.route('/submit', methods=['POST'])
 def subscribing():

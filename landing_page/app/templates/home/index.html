@@ -22,14 +22,11 @@
     <div>
       <form class="ui form" action="/submit_login" method="POST">
         <div class="field">
-          <label>Username</label>
-          <input type="number" name="username" placeholder="Username">
+          <input type="name" name="username" placeholder="Username" required autofocus>
         </div>
         <div class="field">
-          <label>Password</label>
-          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password" required>
         </div>
-
         <div class="actions">
           <button class="ui button" type="submit">Submit</button>
           <div class="ui black deny button">Cancel</div>
@@ -37,9 +34,6 @@
       </form>
   </div>
 </div>
-
-
-
 
 
 </div>
