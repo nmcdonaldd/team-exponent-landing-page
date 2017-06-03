@@ -8,7 +8,7 @@ class User(db.Model):
     username = db.Column(db.String(60), index=True, nullable = False)
     password = db.Column(db.String(60), index=True, nullable = False)
     email = db.Column(db.String(60), index=True, nullable=False)
-    device_id = db.Column(db.String(60), index=True, nullable=False)
+    device_id = db.Column(db.Integer, db.ForeignKey('devices.id'))
 
     def __init__(self, username, password, email, device_id):
         self.username = username
