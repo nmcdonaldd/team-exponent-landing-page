@@ -29,28 +29,9 @@
       </div>
       <button class="ui button" type="submit">Submit</button>
     </form>
-    <a href = "/create_account"> Create Account Here! </a>
+    <a href = "{{ url_for('create_account')}}"> Create Account Here! </a>
   </div>
 </div>
-<!--
-<div class="ui modal"  id="login-modal">
-  <i class="close icon"></i>
-    <div>
-      <form class="ui form" action="/login" method="POST">
-        <div class="field">
-          <input type="name" name="username" placeholder="Username" required autofocus>
-        </div>
-        <div class="field">
-          <input type="password" name="password" placeholder="Password" required>
-        </div>
-        <div class="actions">
-          <button class="ui button" type="submit">Submit</button>
-          <div class="ui black deny button">Cancel</div>
-        </div>
-      </form>
-  </div>
-</div>
--->
 
 </div>
     <div class='featherpad-content' id="what-content">
@@ -71,7 +52,7 @@
           <i class="moon icon"></i>
           Subscribe to our mailing list!
         </h4>
-        <form class="ui form" action="/submit" method="POST">
+        <form class="ui form" action="/submit_subscribe" method="POST">
           <div class="field">
             <label>First Name</label>
             <input type="text" name="name" id="name" placeholder="First Name">

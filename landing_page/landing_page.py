@@ -71,11 +71,32 @@ def logging_in():
 		return render_template('home/profile.html', username = the_username)
 	return redirect('/')
 
-@app.route("/create_account")
-def creating_account():
-	return render_template('home/create.html')
+# route for visitor to create an account for FeatherPad
+# processing form for creating account
 
-@app.route('/submit', methods=['POST'])
+@app.route("/create_account")
+def create_account():
+	return render_template('home/create_account.html')
+
+@app.route("/creating_account", methods=['POST'])
+def creating_account():
+	the_username = request.form['username']
+	the_password = request.form['password']
+	the_email = request.form['email-address']
+	the_device_id = int(request.form['device-id'])
+
+	new_db_user = models.User(username=the_username, password=the_password,
+								email=the_email, device_id=the_device_id)
+
+	print("new user: ", new_db_user.username, new_db_user.password,
+			new_db_user.email, new_db_user.device_id)
+
+	db.session.add(new_db_user)
+	db.session.commit()
+
+	return render_template('home/thankyou_create_account.html')
+
+@app.route('/submit_subscribe', methods=['POST'])
 def subscribing():
 	the_subscriber_fname = request.form['name']
 	the_subscriber_email = request.form['email_address']
