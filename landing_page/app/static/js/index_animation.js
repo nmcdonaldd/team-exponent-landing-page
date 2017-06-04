@@ -6,15 +6,16 @@ $(document).ready(function(){
 
     $("#subscribe-content").hide();
     $("#why-content").hide();
-    $("#what-content").show();
-    $("#login-form").hide();
+    $("#what-content").hide();
+    $("#login-modal").show();
 
-    $("#login-button").click(function() {
-    //$("#what-button").click(function() {
+
+    $("#what-button").click(function() {
       console.log("click");
       $("#subscribe-content").hide(1000);
       $("#why-content").hide(1000);
       $("#what-content").show(1000);
+      $("#login-modal").hide(1000);
     });
 
     $("#why-button").click(function() {
@@ -22,6 +23,7 @@ $(document).ready(function(){
       $("#subscribe-content").hide(1000);
       $("#why-content").show(1000);
       $("#what-content").hide(1000);
+      $("#login-modal").hide(1000);
     });
 
     $("#subscribe-button").click(function() {
@@ -29,6 +31,7 @@ $(document).ready(function(){
       $("#subscribe-content").show(1000);
       $("#why-content").hide(1000);
       $("#what-content").hide(1000);
+      $("#login-modal").hide(1000);
     });
 
     $("#login-button").click(function() {
