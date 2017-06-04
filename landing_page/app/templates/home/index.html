@@ -1,22 +1,38 @@
 <!-- app/templates/home/index.html -->
 {% extends "layout.html" %}
 {% block body %}
-
+  <button class="ui button" id="login-button">
+    Login Here!
+  </button>
   <button class="ui button" id="what-button">
     What is FeatherPad?
   </button>
   <button class="ui button" id="why-button">
     Why FeatherPad?
   </button>
-  <div class="ui button" id="login-button">
-    Login Here!
-  </div>
+
   <div class="ui button" id="subscribe-button" tabindex="0">
     Subscribe to our mailing list!
   </div>
 
 <!-- Modal for login form -->
-
+<div class='ui modal' id="login-modal">
+  <div class="ui raised very padded text container segment">
+    <h4 class="ui horizontal divider header">
+      <i class="moon icon"></i>
+      Login Here!
+    </h4>
+    <form class="ui form" action="/login" method="POST">
+      <div class="field">
+        <p><input type="name" name="username" id = "username" class = "form-control" placeholder="Username" required autofocus></p>
+        <p><input type="password" name="password" id = "password" class = "form-control" placeholder="Password" required></p>
+      </div>
+      <button class="ui button" type="submit">Submit</button>
+    </form>
+    <a href = "/create_account"> Create Account Here! </a>
+  </div>
+</div>
+<!--
 <div class="ui modal"  id="login-modal">
   <i class="close icon"></i>
     <div>
@@ -34,7 +50,7 @@
       </form>
   </div>
 </div>
-
+-->
 
 </div>
     <div class='featherpad-content' id="what-content">
