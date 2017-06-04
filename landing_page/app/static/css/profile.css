@@ -42,12 +42,9 @@ button.logout {
 .temp {
   color: green;
   right: 1em;
-  position: absolute;
-  margin-right: 10%;
+  margin-left: 24%;
   margin-top: 10%;
   text-align: center;
-  z-index: 2;
-  display: block;
   font-family: 'HelveticaNeue-Thin';
   font-size: 5em;
   border: 2px solid Green;
@@ -112,20 +109,20 @@ button:after {
 
 .Force-Baby {
   background-color: #a0caff;
-  margin-left: 12%;
-  margin-top: 12%;
+  margin-left: 20%;
+  margin-top: 15%;
   width: 23em;
-  height: 17em;
-  border-radius: 5px;
-
-  z-index: 1;
+  height: 15em;
+  border: 1px black solid;
 }
 .status {
   text-align: center;
   background-color: #4991ed;
   font-family: 'HelveticaNeue-Thin';
-  border: 1px black solid;
-  z-index: 2;
+  border-bottom: 1px black solid;
+  border-top: 1px black solid;
+  margin-top: -0.25%;
+
 }
 
 .content {
@@ -158,4 +155,37 @@ button:hover .icon-icons8-Info {
 
 button:hover .icon-icons8-User {
   -webkit-filter: invert(100%);
+}
+
+.force-description {
+  margin-left: 20%;
+  font-family: 'HelveticaNeue-Thin';
+  width: 23em;
+  margin-top: 5em;
+}
+
+.temp-description {
+  font-family: 'HelveticaNeue-Thin';
+  display: inline-block;
+  position: relative;
+  margin-top: 2em;
+}
+
+.left {
+  *--background-color: red;
+  width: 50%;
+  display: table-cell;
+  margin: auto;
+  vertical-align: top;
+}
+.right {
+  *--background-color: orange;
+  width: 50%;
+  margin: auto;
+  display: table-cell;
+  vertical-align: top;
+}
+
+.wrapper {
+  display: table;
 }
