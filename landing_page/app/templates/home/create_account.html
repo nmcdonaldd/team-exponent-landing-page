@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+{% block body %}
+
+<center><div class="ui compact message">
+  <p>Sign up now to use your FeatherPad!</p>
+</div></center>
+
+<div class="ui raised segment" id="create-account-form">
+  <form class="ui form" action="/creating_account" method="POST">
+    <div class="field">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="Userame">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Password">
+    </div>
+    <div class="field">
+      <label>E-mail</label>
+      <input type="email" name="email-address" placeholder="E-mail">
+    </div>
+    <div class="field">
+      <label>Device ID</label>
+      <input type="number" name="device-id" placeholder="Device ID">
+    </div>
+    <button class="ui button" type="submit">Submit</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

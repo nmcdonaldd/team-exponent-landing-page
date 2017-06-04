@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1 class = 'thankyou'>Thank You!</h1>
+
+<p>Your account has been created. Click on the link below to be redirected
+to the home page.</p>
+
+<a href = "{{ url_for('chat_view')}}"> Go back to home page! </a>
+
+
+{% endblock %}
