@@ -9,7 +9,8 @@ $(document).ready(function(){
     $("#what-content").show();
     $("#login-form").hide();
 
-    $("#what-button").click(function() {
+    $("#login-button").click(function() {
+    //$("#what-button").click(function() {
       console.log("click");
       $("#subscribe-content").hide(1000);
       $("#why-content").hide(1000);
@@ -32,7 +33,11 @@ $(document).ready(function(){
 
     $("#login-button").click(function() {
       console.log("login yo");
-      $("#login-modal").modal('show');
+      //$("#login-modal").modal('show');
+      $("#login-modal").show(1000);
+      $("#subscribe-content").hide(1000);
+      $("#why-content").hide(1000);
+      $("#what-content").hide(1000);
     });
 
     function start() {
