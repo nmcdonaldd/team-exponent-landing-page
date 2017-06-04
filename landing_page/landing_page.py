@@ -71,6 +71,10 @@ def logging_in():
 		return render_template('home/profile.html', username = the_username)
 	return redirect('/')
 
+@app.route("/create_account", methods=['POST'])
+def creating_account():
+	return render_template('home/create.html')
+
 @app.route('/submit', methods=['POST'])
 def subscribing():
 	the_subscriber_fname = request.form['name']
