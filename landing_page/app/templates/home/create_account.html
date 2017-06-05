@@ -2,18 +2,14 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<div id="create_acc_error">
-  {{ notUnique }}
-
-  {% if notUnique != "None" %}
-
-  {% else %}
+<center><div id="create_acc_error">
+  {% if notUnique %}
     <h4>Your input {{ notUnique }} already exists.<br/>
     Please input another {{ notUnique }}.</h4>
   {% endif %}
 </div>
 
-<center><div class="ui compact message">
+<div class="ui compact message">
   <p>Sign up now to use your FeatherPad!</p>
 </div></center>
 
@@ -34,6 +30,10 @@
     <div class="field">
       <label>Device ID</label>
       <input type="number" name="device-id" placeholder="Device ID">
+    </div>
+    <div class="field">
+      <label>Device Name</label>
+      <input type="text" name="device-name" placeholder="Device Name for Child">
     </div>
     <button class="ui button" type="submit">Submit</button>
   </form>

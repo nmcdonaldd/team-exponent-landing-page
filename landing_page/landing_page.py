@@ -79,11 +79,14 @@ def create_account():
 	return render_template('home/create_account.html')
 
 @app.route("/creating_account", methods=['POST'])
-def creating_account(notUnique="None"):
+def creating_account():
 	the_username = request.form['username']
 	the_password = request.form['password']
 	the_email = request.form['email-address']
 	the_device_id = int(request.form['device-id'])
+	#the_device_name = request.form['device-name']
+
+	the_device_name = ' '.join(word[0].upper() + word[1:] for word in request.form['device-name'].lower().split())
 
 	# Check to make sure unique UID
 	if models.Device.query.filter_by(UID=the_device_id).first() is not None:
@@ -100,30 +103,15 @@ def creating_account(notUnique="None"):
 		print('Not unique email')
 		return render_template('home/create_account.html', notUnique="E-mail")
 
-	new_device = models.Device(UID=the_device_id)
+	new_device = models.Device(UID=the_device_id, name=the_device_name)
 
 	db.session.add(new_device)
 	db.session.commit()
 
-	# print("catcatcatdog")
-	# print(new_device.UID, new_device.id)
-	# print("??????????????")
-
 	new_account = models.Device.query.filter_by(UID=the_device_id).first()
-	print("mario")
-	print(new_account.id, new_account.UID)
-	print("luigi")
-
-	# db.session.commit()
-	#
-	#
-	# print(type(the_device_id))
 	new_db_user = models.User(username=the_username, password=the_password,
 								email=the_email, device_id=new_device.id)
-	#
-	# print("new user: ", new_db_user.username, new_db_user.password,
-	# 		new_db_user.email, new_db_user.device_id)
-	#
+
 	db.session.add(new_db_user)
 	db.session.commit()
 
