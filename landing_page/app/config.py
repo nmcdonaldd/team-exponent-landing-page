@@ -30,7 +30,7 @@ class DevelopmentConfig(Config):
 
 # Production configurations
 class ProductionConfig(Config):
-    DEBUG = False
+    DEBUG = True
 
 app_config = {
     'development': DevelopmentConfig,
