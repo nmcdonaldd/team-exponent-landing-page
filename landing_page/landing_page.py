@@ -69,7 +69,9 @@ def logging_in():
 	if user is not None and the_password == user.password:
 		session['the_user'] = user
 		#return render_template('home/profile.html', username = the_username)
-		return redirect("/home")
+		headers = {'the_user' : the_username }
+		
+		return redirect("/home", headers=headers)
 	return redirect('/')
 @app.route("/home")
 def logged_in():
