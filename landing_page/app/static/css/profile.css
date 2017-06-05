@@ -278,7 +278,7 @@ button:hover .icon-icons8-User {
     position: relative;
         height: 20px;
     padding: 7px 10px;
-    font-weight: bold;
+    /*font-weight: bold;*/
     border: 1px solid #ddd;
     border-left: 3px solid #888;
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
