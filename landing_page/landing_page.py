@@ -70,8 +70,13 @@ def logging_in():
 		session['the_user'] = user
 		return render_template('home/profile.html', username = the_username)
 	return redirect('/')
+## route for FAQ page
+@app.route("/FAQ")
+def faq_page():
+	return render_template('home/faq.html')
+##
 
-# route for visitor to create an account for FeatherPad
+## route for visitor to create an account for FeatherPad
 # processing form for creating account
 
 @app.route("/create_account")
@@ -116,7 +121,7 @@ def creating_account():
 	db.session.commit()
 
 	return render_template('home/thankyou_create_account.html')
-
+##
 @app.route('/submit_subscribe', methods=['POST'])
 def subscribing():
 	the_subscriber_fname = request.form['name']
