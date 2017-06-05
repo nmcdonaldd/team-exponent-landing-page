@@ -69,11 +69,11 @@ def logging_in():
 	if user is not None and the_password == user.password:
 		session['the_user'] = user
 		#return render_template('home/profile.html', username = the_username)
-		return redirect("/home", username= the_username)
+		return render_template("/home/profile.html", username= the_username)
 	return redirect('/')
-@app.route("/home")
-def logged_in():
-	return render_template('home/profile.html')
+#@app.route("/home")
+#def logged_in():
+#	return render_template('home/profile.html')
 
 @app.route("/logout", methods = ["POST"])
 def logout():
