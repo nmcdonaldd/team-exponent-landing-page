@@ -5,7 +5,7 @@
 <div id="create_acc_error">
   {{ notUnique }}
 
-  {% if str(notUnique) != "None" %}
+  {% if notUnique != "None" %}
 
   {% else %}
     <h4>Your input {{ notUnique }} already exists.<br/>
