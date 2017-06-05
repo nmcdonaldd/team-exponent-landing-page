@@ -70,6 +70,13 @@ def logging_in():
 		session['the_user'] = user
 		return render_template('home/profile.html', username = the_username)
 	return redirect('/')
+
+
+@app.route("/logout", methods = ["POST"])
+def logout():
+	session.clear()
+	return redirect('/')
+	
 ## route for FAQ page
 @app.route("/FAQ")
 def faq_page():
