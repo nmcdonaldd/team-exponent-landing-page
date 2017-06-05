@@ -4,6 +4,7 @@
     <title>{{ title }} | FeatherPad</title>
     <link href="{{ url_for('static', filename='css/profile.css') }}" rel="stylesheet">
 
+
 </head>
 <body>
   <p class="greeting">FeatherPad</p>
@@ -22,6 +23,8 @@
 
 {% block body %}
 {% endblock %}
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/profile.js') }}"></script>
 
 </body>
 </html>

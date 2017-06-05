@@ -209,9 +209,6 @@ button:hover .icon-icons8-User {
   height: 7%;
   margin-left: 48%;
 }
-.icon-icons8-Help:hover + .force-description {
-  visibility: visible;
-}
 
 .icon-icons8-Help2 {
   margin-left: 49%;
@@ -222,7 +219,4 @@ button:hover .icon-icons8-User {
   width: 7%;
   height: 7%;
   margin-left: 48%;
-}
-.icon-icons8-Help2:hover + .temp-description {
-  visibility: visible;
 }
