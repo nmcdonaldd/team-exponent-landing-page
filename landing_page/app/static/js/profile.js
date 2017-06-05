@@ -1,6 +1,4 @@
-$(document).ready(function(){
-
-  function myFunction() {
+function myFunction() {
       var x = document.getElementById('p');
       if (x.style.visibility == 'hidden') {
           x.style.visibility = 'visible';
@@ -9,7 +7,7 @@ $(document).ready(function(){
       }
   }
 
-  function myFunction2() {
+function myFunction2() {
       var x = document.getElementById('p2');
       if (x.style.visibility == 'hidden') {
           x.style.visibility = 'visible';
@@ -17,5 +15,3 @@ $(document).ready(function(){
           x.style.visibility = 'hidden';
       }
   }
-
-});
