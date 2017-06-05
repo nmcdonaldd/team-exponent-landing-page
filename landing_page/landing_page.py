@@ -76,7 +76,7 @@ def logging_in():
 def logout():
 	session.clear()
 	return redirect('/')
-	
+
 ## route for FAQ page
 @app.route("/FAQ")
 def faq_page():
@@ -115,16 +115,16 @@ def creating_account():
 		print('Not unique email')
 		return render_template('home/create_account.html', notUnique="E-mail")
 
-	new_device = models.Device(UID=the_device_id, name=the_device_name)
-
-	db.session.add(new_device)
-	db.session.commit()
-
 	new_account = models.Device.query.filter_by(UID=the_device_id).first()
 	new_db_user = models.User(username=the_username, password=the_password,
 								email=the_email, device_id=new_device.id)
 
 	db.session.add(new_db_user)
+	db.session.commit()
+
+	new_device = models.Device(UID=the_device_id, name=the_device_name, user=new_db_user.id)
+
+	db.session.add(new_device)
 	db.session.commit()
 
 	return render_template('home/thankyou_create_account.html')

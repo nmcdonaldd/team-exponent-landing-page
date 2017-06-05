@@ -8,13 +8,11 @@ class User(db.Model):
     username = db.Column(db.String(60), index=True, nullable = False)
     password = db.Column(db.String(60), index=True, nullable = False)
     email = db.Column(db.String(60), index=True, nullable=False)
-    device_id = db.Column(db.Integer, db.ForeignKey('devices.id'))
 
-    def __init__(self, username, password, email, device_id):
+    def __init__(self, username, password, email):
         self.username = username
         self.password = password
         self.email = email
-        self.device_id = device_id
 
 class Subscriber(db.Model):
     __tablename__ = 'subscribers'
@@ -40,13 +38,15 @@ class Device(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     UID = db.Column(db.String(34), nullable=False)
     name = db.Column(db.String(34), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def toDict(self):
-        return {'device_id': self.UID, 'device_name': self.name}
+        return {'device_id': self.UID, 'device_name': self.name, 'user_id': self.user_id}
 
-    def __init__(self, UID, name):
+    def __init__(self, UID, name, user):
         self.UID = UID
         self.name = name
+        self.user_id = user
         pass
 
 class force_reading(db.Model):
