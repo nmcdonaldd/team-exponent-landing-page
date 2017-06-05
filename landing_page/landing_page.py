@@ -117,7 +117,7 @@ def creating_account():
 
 	new_account = models.Device.query.filter_by(UID=the_device_id).first()
 	new_db_user = models.User(username=the_username, password=the_password,
-								email=the_email, device_id=new_device.id)
+								email=the_email)
 
 	db.session.add(new_db_user)
 	db.session.commit()
