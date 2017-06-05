@@ -39,9 +39,10 @@ class Device(db.Model):
     __tablename__ = 'devices'
     id = db.Column(db.Integer, primary_key=True)
     UID = db.Column(db.String(34), nullable=False)
+    name = db.Column(db.String(34), nullable=True)
 
     def toDict(self):
-        return {'device_id': self.UID}
+        return {'device_id': self.UID, 'device_name': self.name}
 
     def __init__(self, UID):
         self.UID = UID
