@@ -43,7 +43,7 @@ $(document).ready(function(){
       $("#what-content").hide(1000);
     });
 
-    function start() {
+    /*function start() {
       $("body").animate({
       'background-position-x': '15%',
       'background-position-y': '25%'
@@ -55,5 +55,5 @@ $(document).ready(function(){
       });
     }
 
-    start();
+    start();  */
 });

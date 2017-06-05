@@ -2,11 +2,22 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<div id="create_acc_error">
+  {{ notUnique }}
+
+  {% if str(notUnique) != "None" %}
+
+  {% else %}
+    <h4>Your input {{ notUnique }} already exists.<br/>
+    Please input another {{ notUnique }}.</h4>
+  {% endif %}
+</div>
+
 <center><div class="ui compact message">
   <p>Sign up now to use your FeatherPad!</p>
 </div></center>
 
-<div class="ui raised segment" id="create-account-form">
+<div class="ui raised segment">
   <form class="ui form" action="/creating_account" method="POST">
     <div class="field">
       <label>Username</label>

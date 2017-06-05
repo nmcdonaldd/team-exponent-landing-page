@@ -79,18 +79,51 @@ def create_account():
 	return render_template('home/create_account.html')
 
 @app.route("/creating_account", methods=['POST'])
-def creating_account():
+def creating_account(notUnique="None"):
 	the_username = request.form['username']
 	the_password = request.form['password']
 	the_email = request.form['email-address']
 	the_device_id = int(request.form['device-id'])
 
+	# Check to make sure unique UID
+	if models.Device.query.filter_by(UID=the_device_id).first() is not None:
+		print('Not unique ID')
+		return render_template('home/create_account.html', notUnique="UID")
+
+	# Check to make sure unique username
+	if models.User.query.filter_by(username=the_username).first() is not None:
+		print('Not unique username')
+		return render_template('home/create_account.html', notUnique="username")
+
+	# Check to make sure unique username
+	if models.User.query.filter_by(email=the_email).first() is not None:
+		print('Not unique email')
+		return render_template('home/create_account.html', notUnique="E-mail")
+
+	new_device = models.Device(UID=the_device_id)
+
+	db.session.add(new_device)
+	db.session.commit()
+
+	# print("catcatcatdog")
+	# print(new_device.UID, new_device.id)
+	# print("??????????????")
+
+	new_account = models.Device.query.filter_by(UID=the_device_id).first()
+	print("mario")
+	print(new_account.id, new_account.UID)
+	print("luigi")
+
+	# db.session.commit()
+	#
+	#
+	# print(type(the_device_id))
 	new_db_user = models.User(username=the_username, password=the_password,
-								email=the_email, device_id=the_device_id)
-
-	print("new user: ", new_db_user.username, new_db_user.password,
-			new_db_user.email, new_db_user.device_id)
-
+								email=the_email, device_id=new_device.id)
+	#
+	# print("new user: ", new_db_user.username, new_db_user.password,
+	# 		new_db_user.email, new_db_user.device_id)
+	#
 	db.session.add(new_db_user)
 	db.session.commit()
 
@@ -135,7 +168,7 @@ def subscribers():
 
 @app.route("/api/temp_hum/<string:device_id>")
 def temp_hums(device_id):
-	# Grab devicePrimaryKey given the mac_address
+	# Grab devicePrimaryKey given the UID
 	devicePrimaryKey = get_device_primary_key(device_id)
 	if devicePrimaryKey is None:
 		return abort(404)
@@ -209,7 +242,7 @@ def deleteDevice(device_id):
 	if devicePrimaryKey is None:
 		return abort(403)
 
-	device_to_delete = models.Device.query.filter_by(mac_address=device_id).first()
+	device_to_delete = models.Device.query.filter_by(UID=device_id).first()
 	db.session.delete(device_to_delete)
 	db.session.commit()
 	# TODO: Remove all readings! (i.e. temp_hum, light_sensor, force_reading)
@@ -252,8 +285,8 @@ def get_data(device_id):
 	return render_template("home/api_data.html", forces = all_forces, temps_hums = all_temp_hum)
 
 def get_device_primary_key(device_id):
-	# First, grab the device primary_key associated with the device_id(mac_address) given
-	devicePrimaryKey = models.Device.query.filter_by(mac_address=device_id).first()
+	# First, grab the device primary_key associated with the device_id(UID) given
+	devicePrimaryKey = models.Device.query.filter_by(UID=device_id).first()
 	if devicePrimaryKey is None:
 		return None
 	else:

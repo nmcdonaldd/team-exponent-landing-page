@@ -38,13 +38,13 @@ class Visitor(db.Model):
 class Device(db.Model):
     __tablename__ = 'devices'
     id = db.Column(db.Integer, primary_key=True)
-    mac_address = db.Column(db.String(34), nullable=False)
+    UID = db.Column(db.String(34), nullable=False)
 
     def toDict(self):
-        return {'device_id': self.mac_address}
+        return {'device_id': self.UID}
 
-    def __init__(self, macAddress):
-        self.mac_address = macAddress
+    def __init__(self, UID):
+        self.UID = UID
         pass
 
 class force_reading(db.Model):
