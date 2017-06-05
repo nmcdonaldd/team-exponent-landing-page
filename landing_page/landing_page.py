@@ -73,7 +73,8 @@ def logging_in():
 	return redirect('/')
 @app.route("/home")
 def logged_in():
-	return render_template('home/profile.html')
+	if 'the_user' in session:
+		return render_template('home/profile.html')
 
 @app.route("/logout", methods = ["POST"])
 def logout():
