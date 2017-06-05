@@ -68,9 +68,13 @@ def logging_in():
 	user = models.User.query.filter_by(username = the_username).first()
 	if user is not None and the_password == user.password:
 		session['the_user'] = user
-		return render_template('home/profile.html', username = the_username)
+		#return render_template('home/profile.html', username = the_username)
+		return redirect("/home", username= the_username)
 	return redirect('/')
-
+@app.route("/home")
+def logged_in():
+	if 'the_user' in session:
+		return render_template('home/profile.html')
 
 @app.route("/logout", methods = ["POST"])
 def logout():
