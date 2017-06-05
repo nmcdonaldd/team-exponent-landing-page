@@ -75,6 +75,7 @@ def logging_in():
 def logged_in():
 	if 'the_user' in session:
 		return render_template('home/profile.html')
+	return redirect('/')
 
 @app.route("/logout", methods = ["POST"])
 def logout():
@@ -84,7 +85,9 @@ def logout():
 ## route for FAQ page
 @app.route("/FAQ")
 def faq_page():
-	return render_template('home/faq.html')
+	if 'the_user' in session:
+		return render_template('home/faq.html')
+	return redirect('/')
 ##
 
 ## route for visitor to create an account for FeatherPad
