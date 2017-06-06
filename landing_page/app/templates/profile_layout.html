@@ -4,11 +4,40 @@
     <title>{{ title }} | FeatherPad</title>
     <link href="{{ url_for('static', filename='css/profile.css') }}" rel="stylesheet">
 
+    <!-- AJAX Library API-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 </head>
 <body>
-  <p class="greeting">FeatherPad</p
-    >
+  <script language="javascript" type="text/javascript">
+  <!--
+  //Browser Support Code
+  function ajaxFunction(){
+     var ajaxRequest;  // The variable that makes Ajax possible!
+
+     try{
+        // Opera 8.0+, Firefox, Safari
+        ajaxRequest = new XMLHttpRequest();
+     }catch (e){
+
+        // Internet Explorer Browsers
+        try{
+           ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+        }catch (e) {
+           try{
+              ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+           }catch (e){
+
+              // Something went wrong
+              alert("Your browser broke!");
+              return false;
+           }
+        }
+     }
+  }
+  //-->
+  </script>
+  <p class="greeting">FeatherPad</p>
   <form type ="submit" action="/logout" method="POST"><button class="logout"> Logout </button></form>
   <div class="content">
     <div class="functions">
