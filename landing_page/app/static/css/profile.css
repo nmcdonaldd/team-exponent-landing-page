@@ -257,6 +257,7 @@ button:hover .icon-icons8-User {
   text-align: center;
   padding-left: 2em;
   padding-right: 2em;
+  font-family:'HelveticaNeue-Thin';
 }
 
 .box:hover  .about {
