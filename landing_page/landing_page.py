@@ -31,6 +31,7 @@ app = create_app(FLASK_CONFIG)
 
 HUMIDITY_JSON_KEY_IDENTIFIER = 'humidity'
 TEMPERATURE_JSON_KEY_IDENTIFIER = 'temperature'
+SENSOR_ID_JSON_KEY_IDENTIFIER = 'sensor_id'
 
 ''' If user tries to access undefined page, post 404 error'''
 @app.errorhandler(404)
@@ -185,6 +186,33 @@ def temp_hums(device_id):
 	all_temp_hum = models.temp_hum.query.filter_by(device_id=devicePrimaryKey)
 	jsonToReturn = []
 	for value in all_temp_hum:
+		jsonToReturn.append(value.toDict())
+	return jsonify(jsonToReturn)
+
+@app.route("/api/alerts/create/<string:device_id>", methods=["POST"])
+def create_alert(device_id):
+	if not request.json:
+		return abort(400)
+
+	values = request.get_json()
+	sensor_id = values[SENSOR_ID_JSON_KEY_IDENTIFIER]
+	devicePrimaryKey = get_device_primary_key(device_id)
+	new_alert = models.Alert(sensor_id=sensor_id)
+	db.session.add(new_alert)
+	db.session.commit()
+
+	return jsonify(new_alert.toDict())
+
+@app.route("/api/alerts/<string:device_id>")
+def temp_hums(device_id):
+	# Grab devicePrimaryKey given the UID
+	devicePrimaryKey = get_device_primary_key(device_id)
+	if devicePrimaryKey is None:
+		return abort(404)
+	# Now, grab all temp_hum objects that have the device_id = devicePrimaryKey
+	all_alerts = models.Alert.query.filter_by(device_id=devicePrimaryKey)
+	jsonToReturn = []
+	for value in all_alerts:
 		jsonToReturn.append(value.toDict())
 	return jsonify(jsonToReturn)
 

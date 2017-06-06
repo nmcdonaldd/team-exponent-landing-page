@@ -33,6 +33,18 @@ class Visitor(db.Model):
     def __init__(self):
         pass
 
+class Alert(db.Model):
+    __tablename__ = 'alerts'
+    id = db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=func.current_timestamp())
+    sensor_id = db.Column(db.String(15), index=True, nullable=False)
+
+    def toDict(self):
+        return {'id': self.id, 'sensor_id': self.sensor_id, 'timestamp': self.timestamp}
+
+    def __init__(self, sensor_id):
+        self.sensor_id = sensor_id
+
 class Device(db.Model):
     __tablename__ = 'devices'
     id = db.Column(db.Integer, primary_key=True)
