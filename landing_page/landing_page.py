@@ -204,7 +204,7 @@ def create_alert(device_id):
 	return jsonify(new_alert.toDict())
 
 @app.route("/api/alerts/<string:device_id>")
-def temp_hums(device_id):
+def alerts(device_id):
 	# Grab devicePrimaryKey given the UID
 	devicePrimaryKey = get_device_primary_key(device_id)
 	if devicePrimaryKey is None:
