@@ -237,6 +237,52 @@ button:hover .icon-icons8-User {
   margin-left: 48%;
 }
 
+.about {
+  visibility: hidden;
+  position: fixed;
+  z-index: 6;
+  background-color: white;
+  max-width: 40em;
+  min-width: 40em;
+  top: 5em;
+  margin-left: 20em;
+  height: 15em;
+  color: #343434;
+  background-color: #BCD2EE;
+  border-top: 1px solid white;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  border-left: 1px solid white;
+  border-radius: 1em;
+  text-align: center;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.box:hover  .about {
+  visibility: visible;
+}
+
+.close {
+  background-color: #BCD2EE;
+  position: relative;
+  z-index: 6;
+}
+
+.enclosure {
+  margin-top: 1.5em;
+  background-color: ;
+}
+
+.icon-icons8-Close-Window{
+  -webkit-filter: invert(100%);
+  padding-right: 0em;
+  margin-right: 0em;
+}
+.icon-icons8-Close-Window:hover  {
+  -webkit-filter: none;
+}
+
 /*FAQ SECTION HERE!!*/
 
 /*Add some spacing*/
