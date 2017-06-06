@@ -38,6 +38,7 @@ class Alert(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=func.current_timestamp())
     sensor_id = db.Column(db.String(15), index=True, nullable=False)
+    device_id = db.Column(db.Integer, db.ForeignKey('devices.id'))
 
     def toDict(self):
         return {'id': self.id, 'sensor_id': self.sensor_id, 'timestamp': self.timestamp}
