@@ -197,7 +197,7 @@ def create_alert(device_id):
 	values = request.get_json()
 	sensor_id = values[SENSOR_ID_JSON_KEY_IDENTIFIER]
 	devicePrimaryKey = get_device_primary_key(device_id)
-	new_alert = models.Alert(sensor_id=sensor_id)
+	new_alert = models.Alert(sensor_id=sensor_id, device_id=devicePrimaryKey)
 	db.session.add(new_alert)
 	db.session.commit()
 

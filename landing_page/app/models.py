@@ -43,8 +43,9 @@ class Alert(db.Model):
     def toDict(self):
         return {'id': self.id, 'sensor_id': self.sensor_id, 'timestamp': self.timestamp}
 
-    def __init__(self, sensor_id):
+    def __init__(self, sensor_id, device_id):
         self.sensor_id = sensor_id
+        self.device_id = device_id
 
 class Device(db.Model):
     __tablename__ = 'devices'
