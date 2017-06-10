@@ -41,7 +41,8 @@ class Alert(db.Model):
     device_id = db.Column(db.Integer, db.ForeignKey('devices.id'))
 
     def toDict(self):
-        return {'id': self.id, 'sensor_id': self.sensor_id, 'timestamp': self.timestamp, 'device_id': self.device_id}
+        device = Device.query.filter_by(id=self.device_id).first()
+        return {'id': self.id, 'sensor_id': self.sensor_id, 'timestamp': self.timestamp, 'device_id': device.UID}
 
     def __init__(self, sensor_id, device_id):
         self.sensor_id = sensor_id
