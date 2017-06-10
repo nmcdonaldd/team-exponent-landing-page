@@ -92,7 +92,8 @@ def logged_in():
 
 
 		someAlert = models.Alert.query.order_by(models.Alert.id.desc()).first()
-		return render_template('home/profile.html', theAlert= someAlert)
+		someTemp = models.temp_hum.query.order_by(models.temp_hum.id.desc()).first()
+		return render_template('home/profile.html', theAlert= someAlert, theTemp = someTemp)
 	return redirect('/')
 
 @app.route("/logout", methods = ["POST"])
