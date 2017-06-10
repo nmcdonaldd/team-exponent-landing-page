@@ -279,7 +279,7 @@ def update_temp_hum_reading(device_id, entry_id):
 	return jsonify(updated_reading.toDict()), 201
 
 @app.route("/api/device/create/<string:device_id>/<string:user_id>/<string:device_name>", methods=["POST"])
-def newDevice(device_id, user_id):
+def newDevice(device_id, user_id, device_name):
 	devicePrimaryKey = get_device_primary_key(device_id)
 
 	# If the device id is already in use, we cannot create it again!
