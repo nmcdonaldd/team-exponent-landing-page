@@ -88,11 +88,11 @@ def logged_in():
 		# force_readings = models.force_reading.query.filter_by(device_id=device_id).first()
 
 		# Grab most recent force reading
-		force_reading = models.force_reading.query.order_by(models.force_reading.id.desc()).first()
+		#force_reading = models.force_reading.query.order_by(models.force_reading.id.desc()).first()
 
-		print("force readings", force_reading.force_left, force_reading.force_middle, force_reading.force_right)
 
-		return render_template('home/profile.html', force_reading=force_reading)
+		someAlert = models.Alert.query.order_by(models.Alert.id.desc()).first()
+		return render_template('home/profile.html', theAlert= someAlert)
 	return redirect('/')
 
 @app.route("/logout", methods = ["POST"])
