@@ -55,7 +55,7 @@ def chat_view():
 def mobile_login(username, password):
 	# Should do some sort of checking to make sure that the username and password works.
 	# TODO: FIX THE FOLLOWING.
-	devices = models.Device.query.all()	# This should be the 1234 device.
+	devices = models.Device.query.filter_by(id=12)	# This should be the 1234 device.
 	toReturn = []
 	for device in devices:
 		toReturn.append(device.toDict())
@@ -116,6 +116,8 @@ def faq_page():
 @app.route("/create_account")
 def create_account():
 	return render_template('home/create_account.html')
+
+@app.route("/api/device/create")
 
 @app.route("/creating_account", methods=['POST'])
 def creating_account():
@@ -276,15 +278,15 @@ def update_temp_hum_reading(device_id, entry_id):
 
 	return jsonify(updated_reading.toDict()), 201
 
-@app.route("/api/device/create/<string:device_id>", methods=["POST"])
-def newDevice(device_id):
+@app.route("/api/device/create/<string:device_id>/<string:user_id>/<string:device_name>", methods=["POST"])
+def newDevice(device_id, user_id):
 	devicePrimaryKey = get_device_primary_key(device_id)
 
 	# If the device id is already in use, we cannot create it again!
 	if devicePrimaryKey is not None:
 		return abort(403)
 
-	device = models.Device(macAddress=device_id)
+	device = models.Device(UID=device_id, user_id=user_id, name=device_name)
 	db.session.add(device)
 	db.session.commit()
 
