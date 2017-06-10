@@ -25,7 +25,7 @@
         });
         </script> -->
 
-      {% if force_reading.force_left != 0 or force_reading.force_middle != 0 or force_reading.force_right != 0%}
+      {% if theAlert != "NONE" %}
         <img id="baby-icon" src="{{ url_for('static', filename='images/crying_baby.png') }}" alt="crie">
         <br/><p id="baby-status-text">FeatherPad senses are tingling! <br/>
           <span style=font-weight:bold> Please check on your baby!</span></p>
