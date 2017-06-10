@@ -69,15 +69,30 @@ def logging_in():
 	user = models.User.query.filter_by(username = the_username).first()
 	if user is not None and the_password == user.password:
 		session['the_user'] = user
-		#return render_template('home/profile.html', username = the_username)
-	#	headers = {'the_user' : user }
 
-		return redirect("/home")
+		# Grabbing device ID based off of username; used to query for profile.html
+		device = models.Device.query.filter_by(user_id=user.id).first()
+
+		if device is None:
+			return redirect('/')
+
+		return redirect(url_for('.logged_in', device_id=device.id))
 	return redirect('/')
+
 @app.route("/home")
 def logged_in():
 	if 'the_user' in session:
-		return render_template('home/profile.html')
+		device_id = request.args.get('device_id')
+
+		# Grabbing force readings for specific device id
+		# force_readings = models.force_reading.query.filter_by(device_id=device_id).first()
+
+		# Grab most recent force reading
+		force_reading = models.force_reading.query.order_by(models.force_reading.id.desc()).first()
+
+		print("force readings", force_reading.force_left, force_reading.force_middle, force_reading.force_right)
+
+		return render_template('home/profile.html', force_reading=force_reading)
 	return redirect('/')
 
 @app.route("/logout", methods = ["POST"])
