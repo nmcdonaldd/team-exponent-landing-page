@@ -27,7 +27,8 @@ class DevelopmentConfig(Config):
     adding significant overhead. So I turned it off.
     """
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_POOL_TIMEOUT = 60000
+    # SQLALCHEMY_POOL_TIMEOUT = 60000
+    SQLALCHEMY_POOL_RECYCLE = 5
 
 # Production configurations
 class ProductionConfig(Config):
