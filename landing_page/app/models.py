@@ -61,10 +61,10 @@ class Device(db.Model):
     def toDict(self):
         return {'device_id': self.UID, 'device_name': self.name, 'user_id': self.user_id}
 
-    def __init__(self, UID, name, user):
+    def __init__(self, UID, name, user_id):
         self.UID = UID
         self.name = name
-        self.user_id = user
+        self.user_id = user_id
         pass
 
 class force_reading(db.Model):
