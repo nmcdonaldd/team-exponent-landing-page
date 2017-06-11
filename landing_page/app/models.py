@@ -14,6 +14,9 @@ class User(db.Model):
         self.password = password
         self.email = email
 
+    def toDict(self):
+        return {'id': self.id, 'username': self.username, 'email': self.email}
+
 class Subscriber(db.Model):
     __tablename__ = 'subscribers'
     id = db.Column(db.Integer, primary_key=True)

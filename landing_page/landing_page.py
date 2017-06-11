@@ -55,10 +55,14 @@ def chat_view():
 def mobile_login(username, password):
 	# Should do some sort of checking to make sure that the username and password works.
 	# TODO: FIX THE FOLLOWING.
-	devices = models.Device.query.filter_by(user_id=12)	# This should be the 1234 device.
-	toReturn = []
+	user = models.User.query.filter_by(username=username).first()
+	devices = models.Device.query.filter_by(user_id=user.id)	# This should be the 1234 device.
+	toReturn = {}
+	toReturn['user'] = user.toDict()
+	devicesList = []
 	for device in devices:
-		toReturn.append(device.toDict())
+		devicesList.append(device.toDict())
+	toReturn['devices'] = devicesList
 	return jsonify(toReturn)
 
 @app.route("/login", methods=['POST'])
